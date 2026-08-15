@@ -2,839 +2,1235 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#ffffff">
-<title>BALIPADA JATRA COMMUNITY</title>
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>BALIPADA JATRA COMUNITY</title>
 
 <style>
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-
-body{
-  margin:0;
-  background:#f7f7fb;
-  color:#202641;
-  font-family:Arial,Helvetica,sans-serif
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
 }
 
-.app{
-  width:100%;
-  max-width:520px;
-  min-height:100vh;
-  margin:auto;
-  padding:15px 16px 28px
+:root {
+    --purple: #651cff;
+    --purple2: #8b22ff;
+    --dark: #20243a;
+    --muted: #747b91;
+    --bg: #f8f7fc;
 }
 
-/* HEADER */
-.topbar{
-  display:grid;
-  grid-template-columns:50px 1fr 50px;
-  align-items:center;
-  min-height:78px
+body {
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
+    background: var(--bg);
+    color: var(--dark);
+    min-height: 100vh;
 }
 
-.icon-btn{
-  width:46px;
-  height:46px;
-  border:0;
-  background:transparent;
-  display:grid;
-  place-items:center
+.app {
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+    min-height: 100vh;
+    padding: 18px 20px 30px;
 }
 
-.hamburger{
-  width:27px;
-  display:flex;
-  flex-direction:column;
-  gap:5px
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    position: relative;
+    text-align: center;
+    padding-top: 8px;
 }
 
-.hamburger span{
-  height:4px;
-  background:#5b16d9;
-  border-radius:5px
+.header-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    min-height: 55px;
 }
 
-.bell{
-  width:23px;
-  height:23px;
-  border:3px solid #5b16d9;
-  border-radius:14px 14px 6px 6px;
-  position:relative
+.menu-btn,
+.notification-btn {
+    position: absolute;
+    top: 5px;
+    width: 52px;
+    height: 52px;
+    border: 0;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.bell:after{
-  content:"";
-  position:absolute;
-  bottom:-7px;
-  left:50%;
-  transform:translateX(-50%);
-  width:9px;
-  height:4px;
-  background:#5b16d9;
-  border-radius:5px
+.menu-btn {
+    left: 0;
 }
 
-.brand{text-align:center}
-
-.brand h1{
-  margin:0;
-  color:#5315d1;
-  font-size:23px;
-  font-weight:900;
-  white-space:nowrap
+.notification-btn {
+    right: 0;
 }
 
-.brand p{
-  margin:7px 0 0;
-  color:#747b95;
-  font-size:15px;
-  font-weight:700
+.menu-icon {
+    width: 44px;
+    height: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-/* LOGO */
-.logo-wrap{
-  display:flex;
-  justify-content:center;
-  margin-bottom:10px
+.menu-icon span {
+    display: block;
+    height: 6px;
+    border-radius: 10px;
+    background: var(--purple);
 }
 
-.logo{
-  width:65px;
-  height:65px;
-  object-fit:cover;
-  border-radius:50%;
-  border:4px solid white;
-  box-shadow:0 8px 25px rgba(80,20,180,.2)
+.bell {
+    width: 29px;
+    height: 29px;
+    border: 4px solid var(--purple);
+    border-radius: 15px 15px 8px 8px;
+    position: relative;
 }
 
-/* MONTH */
-.month-box{
-  position:relative;
-  margin:8px 0 20px
+.bell::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 4px;
+    border-radius: 5px;
+    background: var(--purple);
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-#monthSelect{
-  width:100%;
-  border:0;
-  outline:none;
-  appearance:none;
-  padding:17px 55px 17px 22px;
-  border-radius:18px;
-  background:linear-gradient(110deg,#4610b7,#7b2cff);
-  color:white;
-  font-size:18px;
-  font-weight:900;
-  box-shadow:0 10px 24px rgba(91,22,217,.25)
+.title {
+    color: #6520c9;
+    font-size: clamp(22px, 6vw, 31px);
+    font-weight: 800;
+    line-height: 1.1;
+    white-space: nowrap;
 }
 
-.chevron{
-  position:absolute;
-  right:23px;
-  top:50%;
-  width:13px;
-  height:13px;
-  border-right:3px solid white;
-  border-bottom:3px solid white;
-  transform:translateY(-70%) rotate(45deg);
-  pointer-events:none
+.subtitle {
+    margin-top: 7px;
+    color: var(--muted);
+    font-size: 18px;
+    font-weight: 600;
 }
 
-/* MEMBERS */
-.list{
-  display:flex;
-  flex-direction:column;
-  gap:8px
+/* =========================
+   LOGO
+========================= */
+
+.logo-wrap {
+    width: 108px;
+    height: 108px;
+    margin: 20px auto 18px;
+
+    border-radius: 50%;
+    overflow: hidden;
+
+    background: #fff;
+
+    border: 6px solid #fff;
+
+    box-shadow:
+        0 8px 25px rgba(100, 30, 220, 0.20),
+        0 0 0 1px rgba(100, 30, 220, 0.06);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.member{
-  min-height:68px;
-  padding:9px 17px 9px 10px;
-  background:#fff;
-  border-radius:18px;
-  display:flex;
-  align-items:center;
-  gap:13px;
-  border:1px solid #eeeeF5;
-  box-shadow:0 3px 10px rgba(33,25,70,.06)
+.logo-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
-.avatar{
-  width:48px;
-  height:48px;
-  flex:0 0 48px;
-  border-radius:50%;
-  background:linear-gradient(145deg,#7b2cff,#4610b7);
-  display:grid;
-  place-items:center
+/* =========================
+   MONTH SELECTOR
+========================= */
+
+.month-box {
+    width: 100%;
+    height: 94px;
+
+    border-radius: 27px;
+
+    background:
+        linear-gradient(
+            110deg,
+            #5714d9 0%,
+            #7218ee 50%,
+            #8c28ff 100%
+        );
+
+    box-shadow:
+        0 15px 30px rgba(101, 28, 255, 0.22);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 27px;
+
+    color: white;
 }
 
-.person{
-  width:25px;
-  height:25px;
-  position:relative
+.month-select {
+    flex: 1;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: white;
+
+    font-size: 28px;
+    font-weight: 800;
+
+    appearance: none;
+    -webkit-appearance: none;
+
+    cursor: pointer;
 }
 
-.person:before{
-  content:"";
-  position:absolute;
-  width:11px;
-  height:11px;
-  border-radius:50%;
-  background:#fff;
-  left:7px;
-  top:1px
+.month-select option {
+    color: #20243a;
+    background: white;
 }
 
-.person:after{
-  content:"";
-  position:absolute;
-  width:23px;
-  height:11px;
-  border-radius:13px 13px 5px 5px;
-  background:#fff;
-  left:1px;
-  bottom:1px
+.arrow {
+    width: 22px;
+    height: 22px;
+
+    border-right: 5px solid white;
+    border-bottom: 5px solid white;
+
+    transform: rotate(45deg);
+    margin-right: 7px;
+    margin-top: -10px;
+
+    pointer-events: none;
 }
 
-.name{
-  flex:1;
-  min-width:0;
-  font-size:17px;
-  font-weight:850;
-  text-transform:uppercase;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis
+/* =========================
+   SEARCH
+========================= */
+
+.search-wrap {
+    margin-top: 18px;
+    margin-bottom: 15px;
 }
 
-.amount{
-  font-size:18px;
-  font-weight:900;
-  white-space:nowrap
+.search {
+    width: 100%;
+    height: 58px;
+
+    border: 1px solid #e5e4ec;
+    border-radius: 20px;
+
+    background: white;
+
+    padding: 0 20px;
+
+    font-size: 17px;
+    outline: none;
+
+    color: var(--dark);
+
+    box-shadow:
+        0 6px 20px rgba(30, 25, 70, 0.05);
 }
 
-/* MESSAGE */
-.message{
-  padding:40px 20px;
-  text-align:center;
-  color:#8188a0;
-  background:#fff;
-  border:1px dashed #d9d9e8;
-  border-radius:24px;
-  font-weight:800
+.search::placeholder {
+    color: #9ba0b0;
 }
 
-.message small{
-  display:block;
-  margin-top:9px;
-  color:#a0a5b7
+.search:focus {
+    border-color: #8b45ff;
 }
 
-/* TOTAL */
-.total{
-  margin-top:18px;
-  min-height:86px;
-  padding:15px 23px;
-  border-radius:44px;
-  background:linear-gradient(110deg,#4610b7,#7b2cff);
-  color:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  box-shadow:0 13px 28px rgba(91,22,217,.25)
+/* =========================
+   COLLECTION LIST
+========================= */
+
+.collection-list {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
 }
 
-.total-label{
-  font-size:19px;
-  font-weight:900
+.member-card {
+    min-height: 94px;
+
+    background: white;
+
+    border-radius: 27px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 12px 22px 12px 16px;
+
+    box-shadow:
+        0 7px 22px rgba(35, 28, 70, 0.08);
+
+    border: 1px solid rgba(50, 40, 80, 0.035);
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
 }
 
-.total-value{
-  font-size:40px;
-  font-weight:950;
-  white-space:nowrap
+.member-card:active {
+    transform: scale(0.985);
 }
 
-/* FOOTER */
-.footer{
-  padding:25px 5px 4px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:12px;
-  color:#747b95;
-  font-size:15px;
-  font-weight:700
+.avatar {
+    width: 66px;
+    height: 66px;
+
+    flex: 0 0 66px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #7518ff,
+            #9a28ff
+        );
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
 }
 
-.dot{
-  width:5px;
-  height:5px;
-  border-radius:50%;
-  background:#aaa
+.avatar-head {
+    position: absolute;
+
+    width: 20px;
+    height: 20px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    top: 13px;
 }
 
-/* MOBILE */
-@media(max-width:380px){
-  .app{padding-left:11px;padding-right:11px}
-  .brand h1{font-size:20px}
-  .brand p{font-size:14px}
-  .name{font-size:15px}
-  .amount{font-size:16px}
-  .total-value{font-size:32px}
+.avatar-body {
+    position: absolute;
+
+    width: 39px;
+    height: 20px;
+
+    border-radius: 25px 25px 12px 12px;
+
+    background: white;
+
+    bottom: 13px;
+}
+
+.member-name {
+    margin-left: 20px;
+
+    flex: 1;
+
+    font-size: 24px;
+    font-weight: 700;
+
+    color: #252a3e;
+
+    text-transform: uppercase;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.amount {
+    font-size: 23px;
+    font-weight: 800;
+    color: #252a3e;
+
+    white-space: nowrap;
+}
+
+/* =========================
+   EMPTY
+========================= */
+
+.empty {
+    text-align: center;
+
+    background: white;
+
+    border-radius: 25px;
+
+    padding: 45px 20px;
+
+    color: #8a90a2;
+
+    font-size: 18px;
+    font-weight: 600;
+
+    box-shadow:
+        0 7px 22px rgba(35, 28, 70, 0.05);
+}
+
+/* =========================
+   TOTAL
+========================= */
+
+.total-box {
+    margin-top: 18px;
+
+    min-height: 88px;
+
+    border-radius: 45px;
+
+    padding: 0 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            110deg,
+            #5d18df,
+            #7a1df5,
+            #8c2cff
+        );
+
+    box-shadow:
+        0 14px 30px rgba(101, 28, 255, 0.24);
+}
+
+.total-label {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.total-amount {
+    font-size: 34px;
+    font-weight: 900;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    text-align: center;
+
+    margin-top: 30px;
+
+    color: #73798d;
+
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.footer span {
+    margin: 0 8px;
+}
+
+/* =========================
+   LOADING
+========================= */
+
+.loading {
+    text-align: center;
+    padding: 40px 10px;
+    color: #858b9d;
+    font-weight: 600;
+}
+
+/* =========================
+   DESKTOP
+========================= */
+
+@media (min-width: 600px) {
+
+    body {
+        background:
+            linear-gradient(
+                135deg,
+                #f5f3fb,
+                #eeeaff
+            );
+    }
+
+    .app {
+        padding-top: 35px;
+        padding-bottom: 50px;
+    }
+
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 380px) {
+
+    .app {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .title {
+        font-size: 21px;
+    }
+
+    .month-select {
+        font-size: 22px;
+    }
+
+    .member-card {
+        padding-right: 15px;
+    }
+
+    .member-name {
+        font-size: 20px;
+        margin-left: 14px;
+    }
+
+    .amount {
+        font-size: 19px;
+    }
+
+    .avatar {
+        width: 60px;
+        height: 60px;
+        flex-basis: 60px;
+    }
+
+    .total-amount {
+        font-size: 28px;
+    }
 }
 </style>
 </head>
+
 
 <body>
 
 <div class="app">
 
-<header class="topbar">
+    <!-- HEADER -->
+    <header class="header">
 
-<button class="icon-btn">
-  <span class="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
-  </span>
-</button>
+        <div class="header-row">
 
-<div class="brand">
-  <h1>BALIPADA JATRA COMMUNITY</h1>
-  <p>Monthly Money List</p>
+            <button class="menu-btn" aria-label="Menu">
+                <div class="menu-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+
+            <div>
+                <div class="title">
+                    BALIPADA JATRA COMUNITY
+                </div>
+
+                <div class="subtitle">
+                    Monthly Money List
+                </div>
+            </div>
+
+            <button class="notification-btn" aria-label="Notifications">
+                <div class="bell"></div>
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- LOGO -->
+    <div class="logo-wrap">
+        <img
+            src="./logo.png"
+            alt="Balipada Jatra Community Logo"
+            onerror="this.style.display='none';"
+        >
+    </div>
+
+
+    <!-- MONTH -->
+    <div class="month-box">
+
+        <select id="monthSelect" class="month-select"></select>
+
+        <div class="arrow"></div>
+
+    </div>
+
+
+    <!-- SEARCH -->
+    <div class="search-wrap">
+
+        <input
+            id="searchInput"
+            class="search"
+            type="search"
+            placeholder="Search name..."
+            autocomplete="off"
+        >
+
+    </div>
+
+
+    <!-- COLLECTION -->
+    <main id="collectionList" class="collection-list">
+
+        <div class="loading">
+            Loading collection...
+        </div>
+
+    </main>
+
+
+    <!-- TOTAL -->
+    <div class="total-box">
+
+        <div class="total-label">
+            TOTAL
+        </div>
+
+        <div id="totalAmount" class="total-amount">
+            ₹0
+        </div>
+
+    </div>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+        <span>Public View</span>
+
+        • 
+
+        <span>Developed by Saroj</span>
+
+    </footer>
+
 </div>
 
-<button class="icon-btn">
-  <span class="bell"></span>
-</button>
-
-</header>
-
-<div class="logo-wrap">
-  <img src="logo.png" class="logo" alt="Community Logo">
-</div>
-
-<div class="month-box">
-<select id="monthSelect"></select>
-<span class="chevron"></span>
-</div>
-
-<div id="list" class="list">
-<div class="message">LOADING COLLECTION DATA...</div>
-</div>
-
-<div class="total">
-<span class="total-label">TOTAL</span>
-<span id="totalValue" class="total-value">₹0</span>
-</div>
-
-<footer class="footer">
-<span>Public View</span>
-<span class="dot"></span>
-<span>Developed by Saroj</span>
-</footer>
-
-</div>
 
 <script>
 
-/* =====================================================
+/* ==========================================================
    GOOGLE SHEET CONNECTION
-   ===================================================== */
+   ==========================================================
 
-const CONFIG = {
+   IMPORTANT:
+   Keep your existing Google Sheet connection here.
 
-  spreadsheetId:
-  "1AxAm7z3pv-p5x5iAOObnJ0AgHIp_kzIIyDvAbdSLFwY",
+   If your current website already has a working Google
+   Sheet URL/API, put that SAME URL below.
 
-  sheetName:
-  "Sheet1",
+   DO NOT put the visual/design code inside this section.
 
-  autoRefresh:true,
+   Expected data columns:
 
-  refreshMs:60000
+   Name | Amount | Month
+
+   Example:
+
+   Lucky bhaina | 300 | July
+   Batu bhai    | 300 | July
+   Saroj        | 300 | July
+
+========================================================== */
+
+const GOOGLE_SHEET_CONFIG = {
+
+    /*
+       OPTION 1:
+       Put your existing CSV/API URL here.
+
+       Example:
+
+       CSV_URL:
+       "https://docs.google.com/spreadsheets/d/....../gviz/tq?tqx=out:csv&sheet=Sheet1"
+
+       Keep your existing working URL if you already have one.
+    */
+
+    CSV_URL: "",
+
+    /*
+       Sheet name.
+       Your sheet is Sheet1.
+    */
+
+    SHEET_NAME: "Sheet1"
 
 };
 
 
-/* =====================================================
-   MONTHS
-   ===================================================== */
+/* ==========================================================
+   COLLECTION SETTINGS
+========================================================== */
 
-const MONTHS=[
-"JANUARY",
-"FEBRUARY",
-"MARCH",
-"APRIL",
-"MAY",
-"JUNE",
-"JULY",
-"AUGUST",
-"SEPTEMBER",
-"OCTOBER",
-"NOVEMBER",
-"DECEMBER"
+/*
+   COLLECTION START DATE
+
+   July 2026 is the permanent starting point.
+
+   The website will NEVER show:
+   January 2026
+   February 2026
+   March 2026
+   April 2026
+   May 2026
+   June 2026
+
+   It starts at July 2026.
+*/
+
+const COLLECTION_START_YEAR = 2026;
+const COLLECTION_START_MONTH = 6;
+// JavaScript month:
+// 0 = January
+// 6 = July
+
+
+/* ==========================================================
+   VARIABLES
+========================================================== */
+
+let allData = [];
+
+let selectedMonth = "";
+
+let currentDisplayedData = [];
+
+
+/* ==========================================================
+   MONTH NAMES
+========================================================== */
+
+const MONTH_NAMES = [
+    "JANUARY",
+    "FEBRUARY",
+    "MARCH",
+    "APRIL",
+    "MAY",
+    "JUNE",
+    "JULY",
+    "AUGUST",
+    "SEPTEMBER",
+    "OCTOBER",
+    "NOVEMBER",
+    "DECEMBER"
 ];
 
 
-const monthSelect=
-document.getElementById("monthSelect");
+/* ==========================================================
+   GENERATE VALID MONTHS
+   JULY 2026 → CURRENT MONTH
+========================================================== */
 
-const list=
-document.getElementById("list");
+function generateMonths() {
 
-const totalValue=
-document.getElementById("totalValue");
+    const select = document.getElementById("monthSelect");
 
-let allRows=[];
-let selectedMonth="";
+    select.innerHTML = "";
+
+    const startDate = new Date(
+        COLLECTION_START_YEAR,
+        COLLECTION_START_MONTH,
+        1
+    );
+
+    const now = new Date();
+
+    /*
+       IMPORTANT:
+
+       End date is CURRENT MONTH.
+
+       Therefore if today is:
+
+       August 2026
+
+       available months are:
+
+       JULY 2026
+       AUGUST 2026
+
+       NOT:
+
+       SEPTEMBER 2026
+       OCTOBER 2026
+       etc.
+    */
+
+    const endDate = new Date(
+        now.getFullYear(),
+        now.getMonth(),
+        1
+    );
 
 
-/* =====================================================
-   MONTH NORMALIZATION
-   ===================================================== */
+    let date = new Date(startDate);
 
-function normalizeMonth(value){
 
-  if(!value)return "";
+    while (date <= endDate) {
 
-  let m=String(value)
-    .trim()
-    .toLowerCase();
+        const year = date.getFullYear();
+        const month = date.getMonth();
 
-  const aliases={
+        const value =
+            year + "-" +
+            String(month + 1).padStart(2, "0");
 
-    jan:"JANUARY",
-    january:"JANUARY",
+        const text =
+            MONTH_NAMES[month] +
+            " " +
+            year;
 
-    feb:"FEBRUARY",
-    february:"FEBRUARY",
 
-    mar:"MARCH",
-    march:"MARCH",
+        const option =
+            document.createElement("option");
 
-    apr:"APRIL",
-    april:"APRIL",
+        option.value = value;
+        option.textContent = text;
 
-    may:"MAY",
+        select.appendChild(option);
 
-    jun:"JUNE",
-    june:"JUNE",
 
-    jul:"JULY",
-    july:"JULY",
+        date.setMonth(date.getMonth() + 1);
+    }
 
-    aug:"AUGUST",
-    august:"AUGUST",
 
-    sep:"SEPTEMBER",
-    sept:"SEPTEMBER",
-    september:"SEPTEMBER",
+    /*
+       Automatically select CURRENT MONTH.
 
-    oct:"OCTOBER",
-    october:"OCTOBER",
+       Example:
 
-    nov:"NOVEMBER",
-    november:"NOVEMBER",
+       August 2026 → AUGUST 2026
 
-    dec:"DECEMBER",
-    december:"DECEMBER"
-  };
+       January 2027 → JANUARY 2027
+    */
 
-  if(aliases[m])
-    return aliases[m];
+    const currentValue =
+        now.getFullYear() +
+        "-" +
+        String(now.getMonth() + 1).padStart(2, "0");
 
-  for(const month of MONTHS){
 
-    if(m.includes(month.toLowerCase()))
-      return month;
+    /*
+       If current month is before July 2026,
+       use July 2026.
 
-  }
+       This also makes the code safe for future changes.
+    */
 
-  return m.toUpperCase();
+    if (select.querySelector(
+        `option[value="${currentValue}"]`
+    )) {
+
+        selectedMonth = currentValue;
+
+    } else {
+
+        selectedMonth =
+            select.options[
+                select.options.length - 1
+            ]?.value || "";
+
+    }
+
+
+    select.value = selectedMonth;
+
 }
 
 
-/* =====================================================
-   CSV PARSER
-   ===================================================== */
+/* ==========================================================
+   NORMALIZE MONTH
+========================================================== */
 
-function parseCSV(text){
+function normalizeMonth(value) {
 
-  const rows=[];
-  let row=[];
-  let cell="";
-  let quoted=false;
+    if (!value) return "";
 
-  for(let i=0;i<text.length;i++){
+    let month = String(value)
+        .trim()
+        .toUpperCase();
 
-    const char=text[i];
-    const next=text[i+1];
 
-    if(char==='"' && quoted && next==='"'){
+    const monthMap = {
 
-      cell+='"';
-      i++;
+        JAN: "JANUARY",
+        JANUARY: "JANUARY",
+
+        FEB: "FEBRUARY",
+        FEBRUARY: "FEBRUARY",
+
+        MAR: "MARCH",
+        MARCH: "MARCH",
+
+        APR: "APRIL",
+        APRIL: "APRIL",
+
+        MAY: "MAY",
+
+        JUN: "JUNE",
+        JUNE: "JUNE",
+
+        JUL: "JULY",
+        JULY: "JULY",
+
+        AUG: "AUGUST",
+        AUGUST: "AUGUST",
+
+        SEP: "SEPTEMBER",
+        SEPT: "SEPTEMBER",
+        SEPTEMBER: "SEPTEMBER",
+
+        OCT: "OCTOBER",
+        OCTOBER: "OCTOBER",
+
+        NOV: "NOVEMBER",
+        NOVEMBER: "NOVEMBER",
+
+        DEC: "DECEMBER",
+        DECEMBER: "DECEMBER"
+
+    };
+
+    return monthMap[month] || month;
+}
+
+
+/* ==========================================================
+   MONTH NUMBER
+========================================================== */
+
+function getMonthNumber(monthName) {
+
+    const month = normalizeMonth(monthName);
+
+    return MONTH_NAMES.indexOf(month);
+
+}
+
+
+/* ==========================================================
+   PARSE GOOGLE SHEET DATA
+========================================================== */
+
+function parseCSV(text) {
+
+    const rows = [];
+
+    let row = [];
+    let cell = "";
+    let insideQuotes = false;
+
+
+    for (let i = 0; i < text.length; i++) {
+
+        const char = text[i];
+        const next = text[i + 1];
+
+
+        if (char === '"' && insideQuotes && next === '"') {
+
+            cell += '"';
+
+            i++;
+
+        }
+
+        else if (char === '"') {
+
+            insideQuotes = !insideQuotes;
+
+        }
+
+        else if (char === "," && !insideQuotes) {
+
+            row.push(cell.trim());
+            cell = "";
+
+        }
+
+        else if (
+            (char === "\n" || char === "\r")
+            && !insideQuotes
+        ) {
+
+            if (cell !== "" || row.length > 0) {
+
+                row.push(cell.trim());
+
+                rows.push(row);
+
+                row = [];
+                cell = "";
+
+            }
+
+        }
+
+        else {
+
+            cell += char;
+
+        }
 
     }
 
-    else if(char==='"'){
 
-      quoted=!quoted;
+    if (cell !== "" || row.length > 0) {
 
-    }
+        row.push(cell.trim());
 
-    else if(char==="," && !quoted){
-
-      row.push(cell);
-      cell="";
-
-    }
-
-    else if((char==="\n" || char==="\r") && !quoted){
-
-      if(char==="\r" && next==="\n")i++;
-
-      row.push(cell);
-      cell="";
-
-      if(row.some(v=>String(v).trim()!==""))
         rows.push(row);
 
-      row=[];
+    }
+
+
+    return rows;
+
+}
+
+
+/* ==========================================================
+   CONVERT SHEET DATA
+========================================================== */
+
+function convertRows(rows) {
+
+    if (!rows || rows.length < 2) {
+        return [];
+    }
+
+
+    const headers = rows[0].map(
+        h => String(h).trim().toLowerCase()
+    );
+
+
+    const nameIndex =
+        headers.indexOf("name");
+
+    const amountIndex =
+        headers.indexOf("amount");
+
+    const monthIndex =
+        headers.indexOf("month");
+
+
+    /*
+       If the Sheet doesn't have the expected headers,
+       try first three columns.
+    */
+
+    const nIndex =
+        nameIndex >= 0 ? nameIndex : 0;
+
+    const aIndex =
+        amountIndex >= 0 ? amountIndex : 1;
+
+    const mIndex =
+        monthIndex >= 0 ? monthIndex : 2;
+
+
+    const result = [];
+
+
+    for (let i = 1; i < rows.length; i++) {
+
+        const row = rows[i];
+
+        if (!row || row.length === 0) {
+            continue;
+        }
+
+
+        const name =
+            String(row[nIndex] || "").trim();
+
+        const amountText =
+            String(row[aIndex] || "")
+                .replace(/[₹,\s]/g, "");
+
+
+        const amount =
+            Number(amountText) || 0;
+
+
+        const month =
+            normalizeMonth(row[mIndex]);
+
+
+        if (!name || !month) {
+            continue;
+        }
+
+
+        result.push({
+
+            name: name,
+            amount: amount,
+            month: month
+
+        });
 
     }
 
-    else{
 
-      cell+=char;
-
-    }
-
-  }
-
-  row.push(cell);
-
-  if(row.some(v=>String(v).trim()!==""))
-    rows.push(row);
-
-  return rows;
-}
-
-
-/* =====================================================
-   GOOGLE SHEET DATA
-   ===================================================== */
-
-function cleanHeader(value){
-
-  return String(value||"")
-    .trim()
-    .toLowerCase()
-    .replace(/[\s_-]+/g,"");
+    return result;
 
 }
 
 
-function parseAmount(value){
-
-  const cleaned=String(value||"")
-    .replace(/[₹,\s]/g,"")
-    .replace(/[^\d.-]/g,"");
-
-  const number=Number(cleaned);
-
-  return Number.isFinite(number)?number:0;
-
-}
-
-
-function csvToObjects(csv){
-
-  const rows=parseCSV(csv);
-
-  if(!rows.length)
-    return [];
-
-  const headers=
-    rows[0].map(cleanHeader);
-
-  const nameIndex=
-    headers.findIndex(h=>
-      ["name","member","membername"].includes(h)
-    );
-
-  const amountIndex=
-    headers.findIndex(h=>
-      ["amount","money","collection","value"].includes(h)
-    );
-
-  const monthIndex=
-    headers.findIndex(h=>
-      ["month","months"].includes(h)
-    );
-
-  if(
-    nameIndex===-1 ||
-    amountIndex===-1 ||
-    monthIndex===-1
-  ){
-
-    throw new Error(
-      "Sheet1 must contain NAME, AMOUNT and MONTH columns."
-    );
-
-  }
-
-  return rows.slice(1).map(row=>({
-
-    name:String(row[nameIndex]||"").trim(),
-
-    amount:parseAmount(row[amountIndex]),
-
-    month:normalizeMonth(row[monthIndex])
-
-  })).filter(row=>row.name);
-
-}
-
-
-/* =====================================================
-   FORMAT MONEY
-   ===================================================== */
-
-function money(value){
-
-  return "₹"+Number(value||0)
-    .toLocaleString("en-IN",{
-      maximumFractionDigits:0
-    });
-
-}
-
-
-/* =====================================================
-   MONTH DROPDOWN
-   ===================================================== */
-
-function populateMonths(){
-
-  monthSelect.innerHTML="";
-
-  MONTHS.forEach(month=>{
-
-    const option=
-      document.createElement("option");
-
-    option.value=month;
-
-    option.textContent=
-      month+" "+new Date().getFullYear();
-
-    monthSelect.appendChild(option);
-
-  });
-
-  const current=
-    MONTHS[new Date().getMonth()];
-
-  const available=
-    new Set(allRows.map(row=>row.month));
-
-  if(available.has(current)){
-
-    selectedMonth=current;
-
-  }else if(available.size){
-
-    let last=-1;
-
-    available.forEach(m=>{
-
-      const index=MONTHS.indexOf(m);
-
-      if(index>last)last=index;
-
-    });
-
-    selectedMonth=
-      last>=0 ? MONTHS[last] : current;
-
-  }else{
-
-    selectedMonth=current;
-
-  }
-
-  monthSelect.value=selectedMonth;
-
-}
-
-
-/* =====================================================
-   DISPLAY DATA
-   ===================================================== */
-
-function render(){
-
-  const filtered=
-    allRows.filter(row=>
-      normalizeMonth(row.month)===
-      normalizeMonth(selectedMonth)
-    );
-
-  list.innerHTML="";
-
-  if(!filtered.length){
-
-    list.innerHTML=`
-      <div class="message">
-        NO COLLECTION DATA FOUND
-        <small>
-          Check the MONTH value in Sheet1.
-        </small>
-      </div>
-    `;
-
-    totalValue.textContent="₹0";
-
-    return;
-  }
-
-  let total=0;
-
-  filtered.forEach(row=>{
-
-    total+=Number(row.amount)||0;
-
-    const member=
-      document.createElement("div");
-
-    member.className="member";
-
-    member.innerHTML=`
-
-      <div class="avatar">
-        <span class="person"></span>
-      </div>
-
-      <div class="name"></div>
-
-      <div class="amount"></div>
-
-    `;
-
-    member.querySelector(".name")
-      .textContent=
-      row.name.toUpperCase();
-
-    member.querySelector(".amount")
-      .textContent=
-      money(row.amount);
-
-    list.appendChild(member);
-
-  });
-
-  totalValue.textContent=
-    money(total);
-
-}
-
-
-/* =====================================================
+/* ==========================================================
    LOAD GOOGLE SHEET
-   ===================================================== */
+========================================================== */
 
-async function loadSheet(){
+async function loadGoogleSheet() {
 
-  list.innerHTML=`
-    <div class="message">
-      LOADING COLLECTION DATA...
-    </div>
-  `;
+    /*
+       Keep Google Sheet connection separate.
 
-  try{
+       If CSV_URL is empty, show a helpful message
+       instead of breaking the design.
+    */
 
-    const url=
-      "https://docs.google.com/spreadsheets/d/"+
-      encodeURIComponent(CONFIG.spreadsheetId)+
-      "/gviz/tq?tqx=out:csv&sheet="+
-      encodeURIComponent(CONFIG.sheetName);
+    if (!GOOGLE_SHEET_CONFIG.CSV_URL) {
 
-    const response=
-      await fetch(url,{cache:"no-store"});
+        allData = [];
 
-    if(!response.ok)
-      throw new Error("Google Sheet error");
+        renderCollection();
 
-    const csv=
-      await response.text();
+        return;
 
-    allRows=
-      csvToObjects(csv);
-
-    populateMonths();
-
-    render();
-
-  }catch(error){
-
-    console.error(error);
-
-    list.innerHTML=`
-      <div class="message">
-        UNABLE TO LOAD COLLECTION DATA
-        <small>
-          Check Google Sheet sharing and
-          NAME, AMOUNT, MONTH columns.
-        </small>
-      </div>
-    `;
-
-    totalValue.textContent="₹0";
-
-  }
-
-}
+    }
 
 
-/* =====================================================
-   MONTH CHANGE
-   ===================================================== */
+    try {
 
-monthSelect.addEventListener(
-  "change",
-  function(){
-
-    selectedMonth=this.value;
-
-    render();
-
-  }
-);
-
-
-/* =====================================================
-   START
-   ===================================================== */
-
-loadSheet();
+        const response =
+            await fetch(
+                GOOGLE_SHEET_CONFIG.CSV_URL +
+                (
+                    GOOGLE_SHEET_CONFIG.CSV_URL.includes("?")
+                    ? "&"
+                    : "?"
+                ) +
+                "_=" +
+                Date.now()
+            );
 
 
-/* AUTO UPDATE EVERY 60 SECONDS */
+        if (!response.ok) {
 
-if(CONFIG.autoRefresh){
+            throw new Error(
+                "Google Sheet connection failed"
+            );
 
-  setInterval(
-    loadSheet,
-    CONFIG.refreshMs
-  );
+        }
+
+
+        const text =
+            await response.text();
+
+
+        const rows =
+            parseCSV(text);
+
+
+        allData =
+            convertRows(rows);
+
+
+        renderCollection();
+
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        allData = [];
+
+        document.getElementById(
+            "collectionList"
+        ).innerHTML = `
+            <div class="empty">
+                Unable to load collection data.
+                <br><br>
+                Please check the Google Sheet connection.
+            </div>
+        `;
+
+        document.getElementById(
+            "totalAmount"
+        ).textContent = "₹0";
+
+    }
 
 }
 
-</script>
 
-</body>
-</html>
+/* ==========================================================
+   GET DATA FOR SELECTED MONTH
+========================================================== */
+
+function getSelectedMonthData() {
+
+    if (!selectedMonth) {
+        return [];
+    }
+
+
+    const parts =
+        selectedMonth.split("-");
+
+
+    const year =
+        Number(parts[0]);
+
+    const monthNumber =
+        Number(parts[1]);
+
+
+    /*
+       Exa
