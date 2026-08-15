@@ -2,863 +2,492 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-
 <meta name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <title>BALIPADA JATRA COMUNITY</title>
 
 <style>
-
-/* =========================================================
-   RESET
-========================================================= */
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    -webkit-tap-highlight-color: transparent;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    -webkit-tap-highlight-color:transparent;
 }
 
-:root {
-    --purple: #6417e8;
-    --purple2: #921dff;
-    --purple3: #b42cff;
-
-    --text: #25283d;
-    --muted: #777d91;
-
-    --background: #f8f7fc;
-    --white: #ffffff;
-
-    --shadow: 0 8px 25px rgba(42, 25, 85, 0.09);
-    --purple-shadow: 0 15px 35px rgba(100, 23, 232, 0.25);
+:root{
+    --purple:#651cff;
+    --purple2:#9828ff;
+    --dark:#252a3e;
+    --muted:#73798d;
+    --bg:#f8f7fc;
 }
 
-html {
-    min-height: 100%;
+body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--dark);
+    min-height:100vh;
 }
 
-body {
-    min-height: 100vh;
-    background: var(--background);
-
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        Arial,
-        sans-serif;
-
-    color: var(--text);
+.app{
+    width:100%;
+    max-width:520px;
+    margin:auto;
+    min-height:100vh;
+    padding:18px 20px 30px;
 }
 
-/* =========================================================
-   MAIN APP
-========================================================= */
+/* HEADER */
 
-.app {
-    width: 100%;
-    max-width: 520px;
-
-    min-height: 100vh;
-
-    margin: auto;
-
-    padding:
-        18px
-        20px
-        35px;
+.header{
+    position:relative;
+    text-align:center;
+    padding-top:5px;
 }
 
-/* =========================================================
-   HEADER
-========================================================= */
-
-.header {
-    position: relative;
-    width: 100%;
+.header-row{
+    min-height:58px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
 }
 
-.header-row {
-    position: relative;
-
-    min-height: 82px;
-
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-
-    text-align: center;
-
-    padding-top: 5px;
+.menu-btn,
+.notification-btn{
+    position:absolute;
+    top:4px;
+    width:52px;
+    height:52px;
+    border:0;
+    background:none;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
-/* MENU */
+.menu-btn{left:0;}
+.notification-btn{right:0;}
 
-.menu-btn {
-    position: absolute;
-
-    left: -3px;
-    top: 8px;
-
-    width: 55px;
-    height: 55px;
-
-    border: none;
-    background: transparent;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.menu-icon{
+    width:44px;
+    height:32px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
 }
 
-.menu-icon {
-    width: 45px;
-    height: 34px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.menu-icon span{
+    height:6px;
+    border-radius:10px;
+    background:var(--purple);
 }
 
-.menu-icon span {
-    width: 45px;
-    height: 6px;
-
-    border-radius: 10px;
-
-    background:
-        linear-gradient(
-            90deg,
-            var(--purple),
-            var(--purple3)
-        );
+.bell{
+    width:29px;
+    height:29px;
+    border:4px solid var(--purple);
+    border-radius:15px 15px 8px 8px;
+    position:relative;
 }
 
-/* NOTIFICATION */
-
-.notification-btn {
-    position: absolute;
-
-    right: -3px;
-    top: 8px;
-
-    width: 55px;
-    height: 55px;
-
-    border: none;
-    background: transparent;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.bell:after{
+    content:"";
+    position:absolute;
+    width:10px;
+    height:4px;
+    border-radius:5px;
+    background:var(--purple);
+    bottom:-8px;
+    left:50%;
+    transform:translateX(-50%);
 }
 
-.bell {
-    width: 31px;
-    height: 32px;
-
-    border: 4px solid var(--purple);
-
-    border-radius:
-        18px
-        18px
-        9px
-        9px;
-
-    position: relative;
+.title{
+    color:#6520c9;
+    font-size:clamp(21px,6vw,31px);
+    font-weight:800;
+    line-height:1.1;
+    white-space:nowrap;
 }
 
-.bell::before {
-    content: "";
-
-    position: absolute;
-
-    left: 50%;
-    bottom: -8px;
-
-    transform: translateX(-50%);
-
-    width: 12px;
-    height: 4px;
-
-    border-radius: 10px;
-
-    background: var(--purple);
+.subtitle{
+    margin-top:7px;
+    color:var(--muted);
+    font-size:18px;
+    font-weight:600;
 }
 
-/* TITLE */
+/* LOGO */
 
-.title {
-    color: #651ac7;
-
-    font-size:
-        clamp(
-            21px,
-            5.7vw,
-            31px
-        );
-
-    font-weight: 800;
-
-    line-height: 1.1;
-
-    white-space: nowrap;
-}
-
-.subtitle {
-    margin-top: 8px;
-
-    color: var(--muted);
-
-    font-size: 18px;
-
-    font-weight: 600;
-}
-
-/* =========================================================
-   LOGO
-========================================================= */
-
-.logo-wrap {
-    width: 110px;
-    height: 110px;
-
-    margin:
-        5px
-        auto
-        25px;
-
-    border-radius: 50%;
-
-    overflow: hidden;
-
-    background: #ffffff;
-
-    border: 6px solid #ffffff;
-
+.logo-wrap{
+    width:108px;
+    height:108px;
+    margin:20px auto 25px;
+    border-radius:50%;
+    overflow:hidden;
+    background:#fff;
+    border:6px solid white;
     box-shadow:
-        0 8px 30px rgba(101, 28, 255, 0.23),
-        0 0 0 1px rgba(101, 28, 255, 0.08);
-
-    position: relative;
+        0 8px 25px rgba(100,30,220,.20),
+        0 0 0 1px rgba(100,30,220,.06);
 }
 
-.logo-wrap img {
-    width: 100%;
-    height: 100%;
-
-    display: block;
-
-    object-fit: cover;
+.logo-wrap img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
 }
 
-/* =========================================================
-   MONTH SELECTOR
-========================================================= */
+/* MONTH */
 
-.month-box {
-    width: 100%;
-
-    height: 94px;
-
-    border-radius: 28px;
-
-    background:
-        linear-gradient(
-            110deg,
-            #5914d8 0%,
-            #7116ef 48%,
-            #a026ff 100%
-        );
-
-    box-shadow: var(--purple-shadow);
-
-    position: relative;
-
-    display: flex;
-    align-items: center;
-
-    overflow: hidden;
+.month-box{
+    width:100%;
+    height:94px;
+    border-radius:27px;
+    background:linear-gradient(
+        110deg,
+        #5714d9,
+        #7218ee 50%,
+        #9828ff
+    );
+    box-shadow:0 15px 30px rgba(101,28,255,.22);
+    display:flex;
+    align-items:center;
+    padding:0 27px;
+    color:white;
 }
 
-.month-select {
-    width: 100%;
-    height: 100%;
-
-    border: none;
-    outline: none;
-
-    background: transparent;
-
-    color: #ffffff;
-
-    padding:
-        0
-        75px
-        0
-        30px;
-
-    font-size:
-        clamp(
-            22px,
-            6vw,
-            28px
-        );
-
-    font-weight: 800;
-
-    appearance: none;
-    -webkit-appearance: none;
-
-    cursor: pointer;
+.month-select{
+    flex:1;
+    height:100%;
+    border:0;
+    outline:0;
+    background:transparent;
+    color:white;
+    font-size:25px;
+    font-weight:800;
+    appearance:none;
+    -webkit-appearance:none;
 }
 
-.month-select option {
-    color: #222438;
-    background: white;
+.month-select option{
+    color:#20243a;
+    background:white;
 }
 
-/* ARROW */
-
-.arrow {
-    position: absolute;
-
-    right: 32px;
-    top: 31px;
-
-    width: 25px;
-    height: 25px;
-
-    border-right: 6px solid white;
-    border-bottom: 6px solid white;
-
-    transform: rotate(45deg);
-
-    pointer-events: none;
+.arrow{
+    width:22px;
+    height:22px;
+    border-right:5px solid white;
+    border-bottom:5px solid white;
+    transform:rotate(45deg);
+    margin-right:8px;
+    margin-top:-10px;
+    pointer-events:none;
 }
 
-/* =========================================================
-   SEARCH
-========================================================= */
+/* SEARCH */
 
-.search-wrap {
-    margin-top: 18px;
-    margin-bottom: 18px;
+.search-wrap{
+    margin:18px 0 15px;
 }
 
-.search {
-    width: 100%;
-    height: 62px;
-
-    border-radius: 22px;
-
-    border: 1px solid #e4e2eb;
-
-    outline: none;
-
-    background: white;
-
-    color: var(--text);
-
-    padding:
-        0
-        21px;
-
-    font-size: 18px;
-
-    box-shadow:
-        0 7px 22px rgba(35, 28, 70, 0.06);
+.search{
+    width:100%;
+    height:62px;
+    border:1px solid #e5e4ec;
+    border-radius:22px;
+    background:white;
+    padding:0 22px;
+    font-size:18px;
+    outline:none;
+    color:var(--dark);
+    box-shadow:0 6px 20px rgba(30,25,70,.05);
 }
 
-.search::placeholder {
-    color: #999eae;
+.search::placeholder{
+    color:#9ba0b0;
 }
 
-.search:focus {
-    border-color: #8b32ff;
+/* LIST */
+
+.collection-list{
+    display:flex;
+    flex-direction:column;
+    gap:13px;
 }
 
-/* =========================================================
-   COLLECTION LIST
-========================================================= */
-
-.collection-list {
-    width: 100%;
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 13px;
+.member-card{
+    min-height:94px;
+    background:white;
+    border-radius:27px;
+    display:flex;
+    align-items:center;
+    padding:12px 20px 12px 16px;
+    box-shadow:0 7px 22px rgba(35,28,70,.08);
+    border:1px solid rgba(50,40,80,.035);
 }
 
-/* MEMBER CARD */
-
-.member-card {
-    width: 100%;
-
-    min-height: 96px;
-
-    background: white;
-
-    border-radius: 27px;
-
-    padding:
-        13px
-        20px
-        13px
-        15px;
-
-    display: flex;
-
-    align-items: center;
-
-    box-shadow: var(--shadow);
-
-    border: 1px solid rgba(50, 40, 80, 0.035);
-
-    transition:
-        transform 0.15s ease,
-        box-shadow 0.15s ease;
-
-    animation: cardIn 0.25s ease both;
+.avatar{
+    width:66px;
+    height:66px;
+    flex:0 0 66px;
+    border-radius:50%;
+    background:linear-gradient(145deg,#7518ff,#9a28ff);
+    position:relative;
 }
 
-.member-card:active {
-    transform: scale(0.985);
+.avatar-head{
+    position:absolute;
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    background:white;
+    top:13px;
+    left:23px;
 }
 
-@keyframes cardIn {
+.avatar-body{
+    position:absolute;
+    width:39px;
+    height:20px;
+    border-radius:25px 25px 12px 12px;
+    background:white;
+    bottom:13px;
+    left:14px;
+}
 
-    from {
-        opacity: 0;
-        transform: translateY(8px);
+.member-name{
+    margin-left:20px;
+    flex:1;
+    min-width:0;
+    font-size:23px;
+    font-weight:700;
+    color:#252a3e;
+    text-transform:uppercase;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+
+.amount{
+    font-size:22px;
+    font-weight:800;
+    color:#252a3e;
+    white-space:nowrap;
+}
+
+/* EMPTY */
+
+.empty{
+    text-align:center;
+    padding:45px 20px;
+    color:#8a90a2;
+    font-size:18px;
+    font-weight:600;
+}
+
+/* TOTAL */
+
+.total-box{
+    margin-top:18px;
+    min-height:88px;
+    border-radius:45px;
+    padding:0 30px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    color:white;
+    background:linear-gradient(
+        110deg,
+        #5d18df,
+        #7a1df5,
+        #982cff
+    );
+    box-shadow:0 14px 30px rgba(101,28,255,.24);
+}
+
+.total-label{
+    font-size:20px;
+    font-weight:800;
+}
+
+.total-amount{
+    font-size:34px;
+    font-weight:900;
+}
+
+/* FOOTER */
+
+.footer{
+    text-align:center;
+    margin-top:30px;
+    color:#73798d;
+    font-size:15px;
+    font-weight:600;
+}
+
+/* LOADING */
+
+.loading{
+    text-align:center;
+    padding:40px 10px;
+    color:#858b9d;
+    font-weight:600;
+}
+
+/* ERROR */
+
+.error{
+    text-align:center;
+    padding:35px 15px;
+    color:#777;
+    line-height:1.6;
+}
+
+/* MOBILE */
+
+@media(max-width:380px){
+
+    .app{
+        padding-left:14px;
+        padding-right:14px;
     }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* AVATAR */
-
-.avatar {
-    width: 66px;
-    height: 66px;
-
-    flex: 0 0 66px;
-
-    border-radius: 50%;
-
-    background:
-        linear-gradient(
-            145deg,
-            #7418ff,
-            #a329ff
-        );
-
-    position: relative;
-}
-
-/* PERSON ICON */
-
-.avatar-head {
-    position: absolute;
-
-    width: 21px;
-    height: 21px;
-
-    border-radius: 50%;
-
-    background: white;
-
-    top: 13px;
-    left: 50%;
-
-    transform: translateX(-50%);
-}
-
-.avatar-body {
-    position: absolute;
-
-    width: 40px;
-    height: 21px;
-
-    border-radius:
-        25px
-        25px
-        12px
-        12px;
-
-    background: white;
-
-    bottom: 12px;
-    left: 50%;
-
-    transform: translateX(-50%);
-}
-
-/* NAME */
-
-.member-name {
-    flex: 1;
-
-    min-width: 0;
-
-    margin-left: 20px;
-
-    font-size:
-        clamp(
-            19px,
-            5.2vw,
-            24px
-        );
-
-    font-weight: 700;
-
-    color: #252a3e;
-
-    text-transform: uppercase;
-
-    overflow: hidden;
-
-    text-overflow: ellipsis;
-
-    white-space: nowrap;
-}
-
-/* AMOUNT */
-
-.amount {
-    margin-left: 8px;
-
-    font-size:
-        clamp(
-            19px,
-            5vw,
-            23px
-        );
-
-    font-weight: 800;
-
-    color: #252a3e;
-
-    white-space: nowrap;
-}
-
-/* =========================================================
-   EMPTY / ERROR
-========================================================= */
-
-.empty {
-    width: 100%;
-
-    text-align: center;
-
-    background: white;
-
-    border-radius: 27px;
-
-    padding: 45px 20px;
-
-    color: #8a90a2;
-
-    font-size: 17px;
-
-    font-weight: 600;
-
-    box-shadow: var(--shadow);
-}
-
-.loading {
-    text-align: center;
-
-    padding: 45px 10px;
-
-    color: #858b9d;
-
-    font-size: 18px;
-
-    font-weight: 600;
-}
-
-/* =========================================================
-   TOTAL
-========================================================= */
-
-.total-box {
-    width: 100%;
-
-    min-height: 90px;
-
-    margin-top: 20px;
-
-    border-radius: 48px;
-
-    padding:
-        0
-        30px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    color: white;
-
-    background:
-        linear-gradient(
-            110deg,
-            #5d18df,
-            #7c1df6,
-            #982bff
-        );
-
-    box-shadow: var(--purple-shadow);
-}
-
-.total-label {
-    font-size: 21px;
-
-    font-weight: 800;
-}
-
-.total-amount {
-    font-size: 35px;
-
-    font-weight: 900;
-
-    white-space: nowrap;
-}
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-.footer {
-    text-align: center;
-
-    margin-top: 30px;
-
-    color: #73798d;
-
-    font-size: 15px;
-
-    font-weight: 600;
-}
-
-.footer span {
-    margin: 0 6px;
-}
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
-@media (max-width: 380px) {
-
-    .app {
-        padding-left: 14px;
-        padding-right: 14px;
+    .title{
+        font-size:20px;
     }
 
-    .title {
-        font-size: 20px;
+    .month-select{
+        font-size:21px;
     }
 
-    .subtitle {
-        font-size: 17px;
+    .member-name{
+        font-size:20px;
+        margin-left:14px;
     }
 
-    .logo-wrap {
-        width: 100px;
-        height: 100px;
+    .amount{
+        font-size:19px;
     }
 
-    .month-box {
-        height: 88px;
+    .avatar{
+        width:60px;
+        height:60px;
+        flex-basis:60px;
     }
 
-    .member-card {
-        min-height: 88px;
-        padding-right: 14px;
+    .avatar-head{
+        left:20px;
     }
 
-    .avatar {
-        width: 60px;
-        height: 60px;
-        flex-basis: 60px;
-    }
-
-    .member-name {
-        margin-left: 14px;
-    }
-
-    .total-amount {
-        font-size: 29px;
+    .avatar-body{
+        left:10px;
     }
 }
-
 </style>
 </head>
-
 
 <body>
 
 <div class="app">
 
-    <!-- =====================================================
-         HEADER
-    ====================================================== -->
+<header class="header">
 
-    <header class="header">
+    <div class="header-row">
 
-        <div class="header-row">
+        <button class="menu-btn">
+            <div class="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </button>
 
-            <button
-                class="menu-btn"
-                type="button"
-                aria-label="Menu">
-
-                <div class="menu-icon">
-
-                    <span></span>
-                    <span></span>
-                    <span></span>
-
-                </div>
-
-            </button>
-
-
-            <div>
-
-                <div class="title">
-                    BALIPADA JATRA COMUNITY
-                </div>
-
-                <div class="subtitle">
-                    Monthly Money List
-                </div>
-
+        <div>
+            <div class="title">
+                BALIPADA JATRA COMUNITY
             </div>
 
-
-            <button
-                class="notification-btn"
-                type="button"
-                aria-label="Notifications">
-
-                <div class="bell"></div>
-
-            </button>
-
+            <div class="subtitle">
+                Monthly Money List
+            </div>
         </div>
 
-    </header>
-
-
-    <!-- =====================================================
-         LOGO
-         Keep logo.png in the SAME GitHub repository folder
-         as index.html.
-    ====================================================== -->
-
-    <div class="logo-wrap">
-
-        <img
-            src="./logo.png"
-            alt="Balipada Jatra Community">
+        <button class="notification-btn">
+            <div class="bell"></div>
+        </button>
 
     </div>
 
+</header>
 
-    <!-- =====================================================
-         MONTH SELECTOR
-    ====================================================== -->
 
-    <div class="month-box">
+<!-- YOUR LOGO -->
+<div class="logo-wrap">
+    <img src="./logo.png"
+         alt="Balipada Jatra Community Logo"
+         onerror="console.log('logo.png not found')">
+</div>
 
-        <select
-            id="monthSelect"
-            class="month-select"
-            aria-label="Select month">
-        </select>
 
-        <div class="arrow"></div>
+<!-- MONTH -->
+<div class="month-box">
 
+    <select id="monthSelect"
+            class="month-select">
+    </select>
+
+    <div class="arrow"></div>
+
+</div>
+
+
+<!-- SEARCH -->
+<div class="search-wrap">
+
+    <input
+        id="searchInput"
+        class="search"
+        type="search"
+        placeholder="Search name..."
+        autocomplete="off">
+
+</div>
+
+
+<!-- DATA -->
+<main id="collectionList"
+      class="collection-list">
+
+    <div class="loading">
+        Loading collection...
     </div>
 
+</main>
 
-    <!-- =====================================================
-         SEARCH
-    ====================================================== -->
 
-    <div class="search-wrap">
+<!-- TOTAL -->
+<div class="total-box">
 
-        <input
-            id="searchInput"
-            class="search"
-            type="search"
-            placeholder="Search name..."
-            autocomplete="off">
-
+    <div class="total-label">
+        TOTAL
     </div>
 
-
-    <!-- =====================================================
-         COLLECTION
-    ====================================================== -->
-
-    <main
-        id="collectionList"
-        class="collection-list">
-
-        <div class="loading">
-            Loading collection...
-        </div>
-
-    </main>
-
-
-    <!-- =====================================================
-         TOTAL
-    ====================================================== -->
-
-    <div class="total-box">
-
-        <div class="total-label">
-            TOTAL
-        </div>
-
-        <div
-            id="totalAmount"
-            class="total-amount">
-            ₹0
-        </div>
-
+    <div id="totalAmount"
+         class="total-amount">
+        ₹0
     </div>
 
+</div>
 
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
 
-    <footer class="footer">
-
-        <span>Public View</span>
-
-        • 
-
-        <span>Developed by Saroj</span>
-
-    </footer>
+<footer class="footer">
+    Public View&nbsp;&nbsp; • &nbsp;&nbsp;Developed by Saroj
+</footer>
 
 </div>
 
@@ -867,75 +496,60 @@ body {
 
 /* =========================================================
    GOOGLE SHEET CONNECTION
-   =========================================================
+   ========================================================= */
 
-   YOUR GOOGLE SHEET ID
-========================================================= */
+/*
+   YOUR SPREADSHEET:
 
-const GOOGLE_SHEET_CONFIG = {
+   ID:
+   1AxAm7z3pv-p5x5iAOObnJ0AgHIp_kzIIyDvAbdSLFwY
 
-    SHEET_ID:
-        "1AxAm7z3pv-p5x5iAOObnJ0AgHIp_kzIIyDvAbdSLFwY",
+   SHEET:
+   Sheet1
+*/
 
-    SHEET_NAME:
-        "Sheet1"
+const GOOGLE_SHEET_ID =
+    "1AxAm7z3pv-p5x5iAOObnJ0AgHIp_kzIIyDvAbdSLFwY";
 
-};
+const GOOGLE_SHEET_NAME =
+    "Sheet1";
 
 
-/* =========================================================
-   BUILD GOOGLE SHEET CSV URL
-========================================================= */
+/*
+   Automatically creates the CSV connection.
 
-function getSheetCSVUrl() {
+   You do NOT need to put /edit?usp=drivesdk here.
+*/
 
-    return (
-        "https://docs.google.com/spreadsheets/d/" +
-        GOOGLE_SHEET_CONFIG.SHEET_ID +
-        "/gviz/tq?tqx=out:csv&sheet=" +
-        encodeURIComponent(
-            GOOGLE_SHEET_CONFIG.SHEET_NAME
-        )
-    );
-
-}
+const GOOGLE_SHEET_URL =
+    "https://docs.google.com/spreadsheets/d/" +
+    GOOGLE_SHEET_ID +
+    "/gviz/tq?tqx=out:csv&sheet=" +
+    encodeURIComponent(GOOGLE_SHEET_NAME);
 
 
 /* =========================================================
    COLLECTION START
-=========================================================
+   ========================================================= */
 
-   July 2026
+const START_YEAR = 2026;
 
-   JavaScript months:
-
+/*
+   JavaScript:
    January = 0
    February = 1
    ...
    July = 6
-========================================================= */
+*/
 
-const START_YEAR = 2026;
 const START_MONTH = 6;
 
 
 /* =========================================================
-   GLOBAL VARIABLES
-========================================================= */
-
-let allData = [];
-
-let selectedMonth = "";
-
-let searchText = "";
-
-
-/* =========================================================
    MONTH NAMES
-========================================================= */
+   ========================================================= */
 
-const MONTH_NAMES = [
-
+const MONTHS = [
     "JANUARY",
     "FEBRUARY",
     "MARCH",
@@ -948,77 +562,63 @@ const MONTH_NAMES = [
     "OCTOBER",
     "NOVEMBER",
     "DECEMBER"
-
 ];
 
 
+let allData = [];
+let selectedMonth = "";
+
+
 /* =========================================================
-   MONTH SELECTOR
+   GENERATE MONTHS
+
+   JULY 2026 → CURRENT MONTH
+
+   Example August 2026:
+
+   JULY 2026
+   AUGUST 2026
+
+   September will NOT appear until September arrives.
+
+   When January 2027 arrives:
+
+   JULY 2026
+   AUGUST 2026
+   ...
+   DECEMBER 2026
+   JANUARY 2027
 ========================================================= */
 
-function generateMonths() {
+function generateMonths(){
 
     const select =
-        document.getElementById(
-            "monthSelect"
-        );
+        document.getElementById("monthSelect");
 
     select.innerHTML = "";
 
-
-    const startDate =
+    const start =
         new Date(
             START_YEAR,
             START_MONTH,
             1
         );
 
-
-    const today =
+    const now =
         new Date();
 
-
-    /*
-       CURRENT MONTH ONLY.
-
-       Example:
-
-       August 2026:
-
-       JULY 2026
-       AUGUST 2026
-
-       September is NOT shown yet.
-    */
-
-    const currentDate =
+    const end =
         new Date(
-            today.getFullYear(),
-            today.getMonth(),
+            now.getFullYear(),
+            now.getMonth(),
             1
         );
 
-
     let date =
-        new Date(startDate);
+        new Date(start);
 
 
-    /*
-       Safety:
-       If current date is before our start date,
-       only show July 2026.
-    */
-
-    if (currentDate < startDate) {
-
-        currentDate.setTime(
-            startDate.getTime()
-        );
-
-    }
-
-
-    while (date <= currentDate) {
+    while(date <= end){
 
         const year =
             date.getFullYear();
@@ -1030,209 +630,60 @@ function generateMonths() {
         const value =
             year +
             "-" +
-            String(
-                month + 1
-            ).padStart(2, "0");
-
-
-        const text =
-            MONTH_NAMES[month] +
-            " " +
-            year;
+            String(month + 1).padStart(2,"0");
 
 
         const option =
-            document.createElement(
-                "option"
-            );
-
+            document.createElement("option");
 
         option.value =
             value;
 
         option.textContent =
-            text;
+            MONTHS[month] +
+            " " +
+            year;
 
 
-        select.appendChild(
-            option
-        );
-
+        select.appendChild(option);
 
         date.setMonth(
             date.getMonth() + 1
         );
-
     }
 
 
     /*
-       Automatically select current month.
-
-       August 2026
-       → AUGUST 2026
-
-       January 2027
-       → JANUARY 2027
+       CURRENT MONTH is automatically selected.
     */
 
     const currentValue =
-        today.getFullYear() +
+        now.getFullYear() +
         "-" +
-        String(
-            today.getMonth() + 1
-        ).padStart(2, "0");
+        String(now.getMonth() + 1)
+            .padStart(2,"0");
 
 
-    const currentOption =
+    if(
         select.querySelector(
             `option[value="${currentValue}"]`
-        );
+        )
+    ){
 
-
-    if (currentOption) {
-
-        select.value =
+        selectedMonth =
             currentValue;
 
+    }else{
+
+        selectedMonth =
+            select.options[
+                select.options.length - 1
+            ]?.value || "";
     }
 
-    else {
 
-        select.selectedIndex =
-            select.options.length - 1;
-
-    }
-
-
-    selectedMonth =
-        select.value;
-
-}
-
-
-/* =========================================================
-   MONTH SELECT CHANGE
-========================================================= */
-
-document
-    .getElementById("monthSelect")
-    .addEventListener(
-        "change",
-        function () {
-
-            selectedMonth =
-                this.value;
-
-            renderCollection();
-
-        }
-    );
-
-
-/* =========================================================
-   SEARCH CHANGE
-========================================================= */
-
-document
-    .getElementById("searchInput")
-    .addEventListener(
-        "input",
-        function () {
-
-            searchText =
-                this.value
-                    .trim()
-                    .toLowerCase();
-
-            renderCollection();
-
-        }
-    );
-
-
-/* =========================================================
-   NORMALIZE TEXT
-========================================================= */
-
-function cleanText(value) {
-
-    return String(
-        value ?? ""
-    )
-    .trim()
-    .replace(/\s+/g, " ");
-
-}
-
-
-/* =========================================================
-   NORMALIZE MONTH
-========================================================= */
-
-function normalizeMonth(value) {
-
-    const text =
-        cleanText(value)
-            .toUpperCase();
-
-
-    const map = {
-
-        JAN: "JANUARY",
-        JANUARY: "JANUARY",
-
-        FEB: "FEBRUARY",
-        FEBRUARY: "FEBRUARY",
-
-        MAR: "MARCH",
-        MARCH: "MARCH",
-
-        APR: "APRIL",
-        APRIL: "APRIL",
-
-        MAY: "MAY",
-
-        JUN: "JUNE",
-        JUNE: "JUNE",
-
-        JUL: "JULY",
-        JULY: "JULY",
-
-        AUG: "AUGUST",
-        AUGUST: "AUGUST",
-
-        SEP: "SEPTEMBER",
-        SEPT: "SEPTEMBER",
-        SEPTEMBER: "SEPTEMBER",
-
-        OCT: "OCTOBER",
-        OCTOBER: "OCTOBER",
-
-        NOV: "NOVEMBER",
-        NOVEMBER: "NOVEMBER",
-
-        DEC: "DECEMBER",
-        DECEMBER: "DECEMBER"
-
-    };
-
-
-    return map[text] || text;
-
-}
-
-
-/* =========================================================
-   MONTH NUMBER
-========================================================= */
-
-function getMonthNumber(month) {
-
-    return MONTH_NAMES.indexOf(
-        normalizeMonth(month)
-    );
-
+    select.value =
+        selectedMonth;
 }
 
 
@@ -1240,21 +691,20 @@ function getMonthNumber(month) {
    CSV PARSER
 ========================================================= */
 
-function parseCSV(text) {
+function parseCSV(text){
 
     const rows = [];
 
     let row = [];
     let cell = "";
+    let quotes = false;
 
-    let insideQuotes = false;
 
-
-    for (
+    for(
         let i = 0;
         i < text.length;
         i++
-    ) {
+    ){
 
         const char =
             text[i];
@@ -1263,25 +713,576 @@ function parseCSV(text) {
             text[i + 1];
 
 
-        if (
+        if(
             char === '"' &&
-            insideQuotes &&
+            quotes &&
             next === '"'
-        ) {
+        ){
 
             cell += '"';
-
             i++;
 
         }
 
-        else if (
+        else if(
             char === '"'
-        ) {
+        ){
 
-            insideQuotes =
-                !insideQuotes;
+            quotes =
+                !quotes;
 
         }
 
-    
+        else if(
+            char === "," &&
+            !quotes
+        ){
+
+            row.push(
+                cell.trim()
+            );
+
+            cell = "";
+
+        }
+
+        else if(
+            (char === "\n" ||
+             char === "\r") &&
+            !quotes
+        ){
+
+            if(
+                cell !== "" ||
+                row.length > 0
+            ){
+
+                row.push(
+                    cell.trim()
+                );
+
+                rows.push(row);
+
+                row = [];
+                cell = "";
+            }
+
+        }
+
+        else{
+
+            cell += char;
+        }
+    }
+
+
+    if(
+        cell !== "" ||
+        row.length > 0
+    ){
+
+        row.push(
+            cell.trim()
+        );
+
+        rows.push(row);
+    }
+
+
+    return rows;
+}
+
+
+/* =========================================================
+   CLEAN HEADER
+========================================================= */
+
+function cleanHeader(value){
+
+    return String(value || "")
+        .trim()
+        .toLowerCase()
+        .replace(/[\s_-]+/g,"");
+}
+
+
+/* =========================================================
+   FIND COLUMN
+========================================================= */
+
+function findColumn(headers,names){
+
+    for(
+        const name of names
+    ){
+
+        const index =
+            headers.indexOf(
+                cleanHeader(name)
+            );
+
+        if(index >= 0){
+            return index;
+        }
+    }
+
+    return -1;
+}
+
+
+/* =========================================================
+   MONTH NORMALIZER
+========================================================= */
+
+function normalizeMonth(value){
+
+    if(!value) return "";
+
+    let v =
+        String(value)
+        .trim()
+        .toUpperCase();
+
+
+    const map = {
+
+        JAN:"JANUARY",
+        JANUARY:"JANUARY",
+
+        FEB:"FEBRUARY",
+        FEBRUARY:"FEBRUARY",
+
+        MAR:"MARCH",
+        MARCH:"MARCH",
+
+        APR:"APRIL",
+        APRIL:"APRIL",
+
+        MAY:"MAY",
+
+        JUN:"JUNE",
+        JUNE:"JUNE",
+
+        JUL:"JULY",
+        JULY:"JULY",
+
+        AUG:"AUGUST",
+        AUGUST:"AUGUST",
+
+        SEP:"SEPTEMBER",
+        SEPT:"SEPTEMBER",
+        SEPTEMBER:"SEPTEMBER",
+
+        OCT:"OCTOBER",
+        OCTOBER:"OCTOBER",
+
+        NOV:"NOVEMBER",
+        NOVEMBER:"NOVEMBER",
+
+        DEC:"DECEMBER",
+        DECEMBER:"DECEMBER"
+    };
+
+
+    return map[v] || v;
+}
+
+
+/* =========================================================
+   PARSE MONTH + YEAR FROM TEXT
+
+   Supports:
+
+   August
+   August 2026
+   AUG 2026
+   2026-08
+   08/2026
+========================================================= */
+
+function parseMonthYear(value){
+
+    if(!value){
+
+        return {
+            month:"",
+            year:null
+        };
+    }
+
+
+    const text =
+        String(value)
+        .trim()
+        .toUpperCase();
+
+
+    /*
+       YYYY-MM
+    */
+
+    let match =
+        text.match(
+            /^(\d{4})[-\/](\d{1,2})$/
+        );
+
+
+    if(match){
+
+        return {
+            month:MONTHS[
+                Number(match[2]) - 1
+            ],
+            year:Number(match[1])
+        };
+    }
+
+
+    /*
+       MONTH YYYY
+    */
+
+    match =
+        text.match(
+            /^([A-Z]+)\s+(\d{4})$/
+        );
+
+
+    if(match){
+
+        return {
+            month:normalizeMonth(
+                match[1]
+            ),
+            year:Number(match[2])
+        };
+    }
+
+
+    /*
+       YYYY MONTH
+    */
+
+    match =
+        text.match(
+            /^(\d{4})\s+([A-Z]+)$/
+        );
+
+
+    if(match){
+
+        return {
+            month:normalizeMonth(
+                match[2]
+            ),
+            year:Number(match[1])
+        };
+    }
+
+
+    /*
+       Month only
+    */
+
+    return {
+        month:normalizeMonth(text),
+        year:null
+    };
+}
+
+
+/* =========================================================
+   CONVERT SHEET ROWS
+========================================================= */
+
+function convertRows(rows){
+
+    if(
+        !rows ||
+        rows.length < 2
+    ){
+
+        return [];
+    }
+
+
+    const headers =
+        rows[0].map(
+            cleanHeader
+        );
+
+
+    /*
+       Supported names:
+
+       Name
+       Member
+       Member Name
+
+       Amount
+       Money
+       Collection
+
+       Month
+       Date
+
+       Year
+    */
+
+    const nameIndex =
+        findColumn(
+            headers,
+            [
+                "name",
+                "member",
+                "member name"
+            ]
+        );
+
+
+    const amountIndex =
+        findColumn(
+            headers,
+            [
+                "amount",
+                "money",
+                "collection"
+            ]
+        );
+
+
+    const monthIndex =
+        findColumn(
+            headers,
+            [
+                "month"
+            ]
+        );
+
+
+    const yearIndex =
+        findColumn(
+            headers,
+            [
+                "year"
+            ]
+        );
+
+
+    const dateIndex =
+        findColumn(
+            headers,
+            [
+                "date"
+            ]
+        );
+
+
+    const result = [];
+
+
+    for(
+        let i = 1;
+        i < rows.length;
+        i++
+    ){
+
+        const row =
+            rows[i];
+
+
+        if(!row) continue;
+
+
+        /*
+           If proper headers are not found,
+           use:
+
+           Column A = Name
+           Column B = Amount
+           Column C = Month
+           Column D = Year
+        */
+
+        const n =
+            nameIndex >= 0
+            ? nameIndex
+            : 0;
+
+
+        const a =
+            amountIndex >= 0
+            ? amountIndex
+            : 1;
+
+
+        const m =
+            monthIndex >= 0
+            ? monthIndex
+            : 2;
+
+
+        const y =
+            yearIndex >= 0
+            ? yearIndex
+            : 3;
+
+
+        const name =
+            String(
+                row[n] || ""
+            ).trim();
+
+
+        if(!name) continue;
+
+
+        const amountText =
+            String(
+                row[a] || ""
+            )
+            .replace(/[₹,\s]/g,"");
+
+
+        const amount =
+            Number(amountText) || 0;
+
+
+        let month = "";
+        let year = null;
+
+
+        /*
+           Date column gets priority.
+        */
+
+        if(
+            dateIndex >= 0 &&
+            row[dateIndex]
+        ){
+
+            const parsed =
+                parseMonthYear(
+                    row[dateIndex]
+                );
+
+            month =
+                parsed.month;
+
+            year =
+                parsed.year;
+
+
+            /*
+               Try browser Date for
+               values such as 8/15/2026.
+            */
+
+            if(!year){
+
+                const d =
+                    new Date(
+                        row[dateIndex]
+                    );
+
+                if(!isNaN(d)){
+
+                    month =
+                        MONTHS[
+                            d.getMonth()
+                        ];
+
+                    year =
+                        d.getFullYear();
+                }
+            }
+        }
+
+
+        /*
+           Month column
+        */
+
+        if(
+            !month &&
+            row[m]
+        ){
+
+            const parsed =
+                parseMonthYear(
+                    row[m]
+                );
+
+            month =
+                parsed.month;
+
+            year =
+                parsed.year;
+        }
+
+
+        /*
+           Separate Year column
+        */
+
+        if(
+            row[y] &&
+            !year
+        ){
+
+            const possibleYear =
+                Number(
+                    String(
+                        row[y]
+                    ).trim()
+                );
+
+
+            if(
+                possibleYear >= 2000 &&
+                possibleYear <= 2100
+            ){
+
+                year =
+                    possibleYear;
+            }
+        }
+
+
+        /*
+           IMPORTANT:
+
+           If your Sheet only has Month and
+           no Year, old existing rows are
+           treated as 2026.
+
+           For 2027+ use a Year column.
+        */
+
+        if(!year){
+
+            year = 2026;
+        }
+
+
+        result.push({
+
+            name:name,
+
+            amount:amount,
+
+            month:month,
+
+            year:year
+
+        });
+    }
+
+
+    return result;
+}
+
+
+/* =========================================================
+   LOAD GOOGLE SHEET
+===========================================
