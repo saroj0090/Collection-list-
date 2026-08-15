@@ -20,6 +20,7 @@
 
 :root{
     --purple:#6817ee;
+    --green:#16963d;
     --dark:#252a3e;
     --muted:#777d91;
     --bg:#f8f7fc;
@@ -466,15 +467,17 @@ body{
 }
 
 .collected-label{
-    color:#6817ee;
+    color:var(--purple);
 
-    font-size:19px;
+    font-size:18px;
 
     font-weight:700;
+
+    letter-spacing:.2px;
 }
 
 .collected-amount{
-    color:#6817ee;
+    color:var(--purple);
 
     font-size:28px;
 
@@ -501,28 +504,28 @@ body{
 
     justify-content:space-between;
 
-    color:white;
+    background:white;
 
-    background:
-        linear-gradient(
-            110deg,
-            #35a853,
-            #22a447,
-            #16963d
-        );
+    border:2px solid #dcefe2;
 
     box-shadow:
-        0 14px 30px
-        rgba(35,160,70,.22);
+        0 8px 24px
+        rgba(35,28,70,.07);
 }
 
 .total-label{
+    color:var(--green);
+
     font-size:23px;
 
     font-weight:900;
+
+    letter-spacing:.2px;
 }
 
 .total-amount{
+    color:var(--green);
+
     font-size:36px;
 
     font-weight:900;
@@ -559,7 +562,6 @@ body{
 
     .title{
         font-size:23px;
-
         letter-spacing:-0.7px;
     }
 
@@ -578,14 +580,12 @@ body{
 
     .member-card{
         min-height:88px;
-
         padding-right:14px;
     }
 
     .avatar{
         width:60px;
         height:60px;
-
         min-width:60px;
     }
 
@@ -599,7 +599,6 @@ body{
 
     .member-name{
         margin-left:14px;
-
         font-size:19px;
     }
 
@@ -633,125 +632,141 @@ body{
 <div class="app">
 
 
-    <!-- HEADER -->
+<!-- =========================
+     HEADER
+========================= -->
 
-    <header class="header">
+<header class="header">
 
-        <div class="header-row">
+    <div class="header-row">
 
-            <div>
+        <div>
 
-                <div class="title">
-                    BALIPADA JATRA COMMUNITY
-                </div>
+            <div class="title">
+                BALIPADA JATRA COMMUNITY
+            </div>
 
-                <div class="subtitle">
-                    Monthly Money List
-                </div>
-
+            <div class="subtitle">
+                Monthly Money List
             </div>
 
         </div>
 
-    </header>
-
-
-    <!-- LOGO -->
-
-    <div class="logo-wrap">
-
-        <img
-            src="./logo.png"
-            alt="Balipada Jatra Community Logo"
-            onerror="this.style.display='none';">
-
     </div>
 
+</header>
 
-    <!-- MONTH -->
 
-    <div class="month-box">
+<!-- =========================
+     LOGO
+========================= -->
 
-        <select
-            id="monthSelect"
-            class="month-select">
-        </select>
+<div class="logo-wrap">
 
-        <div class="arrow"></div>
+    <img
+        src="./logo.png"
+        alt="Balipada Jatra Community Logo"
+        onerror="this.style.display='none';">
 
+</div>
+
+
+<!-- =========================
+     MONTH
+========================= -->
+
+<div class="month-box">
+
+    <select
+        id="monthSelect"
+        class="month-select">
+    </select>
+
+    <div class="arrow"></div>
+
+</div>
+
+
+<!-- =========================
+     SEARCH
+========================= -->
+
+<div class="search-wrap">
+
+    <input
+        id="searchInput"
+        class="search"
+        type="search"
+        placeholder="Search name..."
+        autocomplete="off">
+
+</div>
+
+
+<!-- =========================
+     COLLECTION
+========================= -->
+
+<main
+    id="collectionList"
+    class="collection-list">
+
+    <div class="loading">
+        Loading collection...
     </div>
 
+</main>
 
-    <!-- SEARCH -->
 
-    <div class="search-wrap">
+<!-- =========================
+     MONTHLY COLLECTED
+========================= -->
 
-        <input
-            id="searchInput"
-            class="search"
-            type="search"
-            placeholder="Search name..."
-            autocomplete="off">
+<div class="collected-box">
 
+    <div class="collected-label">
+        COLLECTED
     </div>
 
-
-    <!-- COLLECTION -->
-
-    <main
-        id="collectionList"
-        class="collection-list">
-
-        <div class="loading">
-            Loading collection...
-        </div>
-
-    </main>
-
-
-    <!-- MONTHLY COLLECTED -->
-
-    <div class="collected-box">
-
-        <div class="collected-label">
-            🟣 COLLECTED
-        </div>
-
-        <div
-            id="collectedAmount"
-            class="collected-amount">
-            ₹0
-        </div>
-
+    <div
+        id="collectedAmount"
+        class="collected-amount">
+        ₹0
     </div>
 
+</div>
 
-    <!-- OVERALL TOTAL -->
 
-    <div class="total-box">
+<!-- =========================
+     OVERALL TOTAL
+========================= -->
 
-        <div class="total-label">
-            🟢 TOTAL
-        </div>
+<div class="total-box">
 
-        <div
-            id="totalAmount"
-            class="total-amount">
-            ₹0
-        </div>
-
+    <div class="total-label">
+        TOTAL
     </div>
 
+    <div
+        id="totalAmount"
+        class="total-amount">
+        ₹0
+    </div>
 
-    <!-- FOOTER -->
+</div>
 
-    <footer class="footer">
 
-        Public View
-        &nbsp; • &nbsp;
-        Developed by Saroj
+<!-- =========================
+     FOOTER
+========================= -->
 
-    </footer>
+<footer class="footer">
+
+    Public View
+    &nbsp; • &nbsp;
+    Developed by Saroj
+
+</footer>
 
 </div>
 
@@ -760,7 +775,7 @@ body{
 
 
 /* ==========================================================
-   GOOGLE SHEET CONNECTION
+   GOOGLE SHEET
 ========================================================== */
 
 const SHEET_ID =
@@ -771,7 +786,7 @@ const SHEET_NAME =
 
 
 /*
-   Sheet1 columns:
+   Sheet1:
 
    A = NAME
    B = MONTH
@@ -861,7 +876,6 @@ function generateMonths(){
 
     monthSelect.innerHTML = "";
 
-
     const startDate =
         new Date(
             START_YEAR,
@@ -869,10 +883,8 @@ function generateMonths(){
             1
         );
 
-
     const now =
         new Date();
-
 
     const currentMonthDate =
         new Date(
@@ -881,10 +893,8 @@ function generateMonths(){
             1
         );
 
-
     let date =
         new Date(startDate);
-
 
     while(
         date <= currentMonthDate
@@ -896,12 +906,10 @@ function generateMonths(){
         const month =
             date.getMonth();
 
-
         const option =
             document.createElement(
                 "option"
             );
-
 
         option.value =
             year +
@@ -913,24 +921,22 @@ function generateMonths(){
                 "0"
             );
 
-
         option.textContent =
             MONTH_NAMES[month] +
             " " +
             year;
 
-
         monthSelect.appendChild(
             option
         );
 
-
         date.setMonth(
             date.getMonth() + 1
         );
-
     }
 
+
+    /* CURRENT MONTH */
 
     const currentValue =
         now.getFullYear() +
@@ -1089,16 +1095,13 @@ function loadGoogleSheet(){
                             cells[0]?.v ??
                             "";
 
-
                         const month =
                             cells[1]?.v ??
                             "";
 
-
                         const amountValue =
                             cells[2]?.v ??
                             0;
-
 
                         const yearValue =
                             cells[3]?.v ??
@@ -1218,11 +1221,6 @@ function loadGoogleSheet(){
     script.onerror =
         function(){
 
-            console.error(
-                "Google Sheet connection failed."
-            );
-
-
             showError(
                 "Google Sheet connection failed. Check that Sheet1 is shared as Anyone with the link → Viewer."
             );
@@ -1243,7 +1241,7 @@ function loadGoogleSheet(){
 
 
 /* ==========================================================
-   GET SELECTED MONTH DATA
+   SELECTED MONTH DATA
 ========================================================== */
 
 function getSelectedMonthData(){
@@ -1295,56 +1293,66 @@ function getSelectedMonthData(){
 
 
 /* ==========================================================
-   GET OVERALL TOTAL
+   OVERALL TOTAL
 ==========================================================
 
-   IMPORTANT:
-
-   This is NOT the selected month's total.
-
-   It adds ALL collection amounts from
-   July 2026 through the current month.
+   Adds everything from July 2026
+   through the current month.
 
    Example:
 
-   July = ₹1500
-   August = ₹1800
-   September = ₹1500
+   July   ₹1500
+   August ₹1800
+   September ₹1500
 
    TOTAL = ₹4800
 ========================================================== */
 
 function getOverallTotal(){
 
+    const startDate =
+        new Date(
+            START_YEAR,
+            START_MONTH,
+            1
+        );
+
+
+    const now =
+        new Date();
+
+
+    const currentMonth =
+        new Date(
+            now.getFullYear(),
+            now.getMonth(),
+            1
+        );
+
+
     return allData.reduce(
         function(sum,item){
+
+            const monthIndex =
+                MONTH_NAMES.indexOf(
+                    item.month
+                );
+
+
+            if(
+                monthIndex < 0 ||
+                !item.year
+            ){
+
+                return sum;
+
+            }
+
 
             const itemDate =
                 new Date(
                     item.year,
-                    MONTH_NAMES.indexOf(
-                        item.month
-                    ),
-                    1
-                );
-
-
-            const startDate =
-                new Date(
-                    START_YEAR,
-                    START_MONTH,
-                    1
-                );
-
-
-            const now =
-                new Date();
-
-
-            const currentMonth =
-                new Date(
-                    now.getFullYear(),
-                    now.getMonth(),
+                    monthIndex,
                     1
                 );
 
@@ -1374,7 +1382,7 @@ function getOverallTotal(){
 
 
 /* ==========================================================
-   RENDER COLLECTION
+   RENDER
 ========================================================== */
 
 function renderCollection(){
@@ -1382,6 +1390,8 @@ function renderCollection(){
     let rows =
         getSelectedMonthData();
 
+
+    /* SEARCH */
 
     const search =
         searchText
