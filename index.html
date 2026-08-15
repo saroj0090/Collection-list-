@@ -2,91 +2,362 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>Monthly Money List</title>
+
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#f5f6f8;color:#202124;font-family:Arial,Helvetica,sans-serif}
-.page{max-width:720px;margin:auto;padding:18px 14px 40px}
-.header{background:#fff;border-radius:12px;padding:20px;margin-bottom:14px;box-shadow:0 2px 8px #00000012}
-h1{margin:0;font-size:25px}
-.subtitle{margin:7px 0 0;color:#70757a;font-size:14px}
-.month{margin-top:18px;width:100%;padding:11px;border:1px solid #dadce0;border-radius:8px;font-size:16px;background:#fff}
-.card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px #00000012}
-table{width:100%;border-collapse:collapse}
-th{background:#f8f9fa;color:#5f6368;text-align:left;font-size:13px;font-weight:700;padding:13px 14px;border-bottom:1px solid #e0e0e0}
-th:last-child,td:last-child{text-align:right}
-td{padding:13px 14px;border-bottom:1px solid #eee;font-size:15px}
-.amount{font-weight:600}
-.total td{font-weight:700;font-size:16px;background:#fafafa;border-top:2px solid #ddd}
-.footer{text-align:center;color:#80868b;font-size:12px;margin-top:15px}
-@media(max-width:450px){.page{padding:10px}.header{padding:16px}h1{font-size:22px}td,th{padding:12px 10px}}
+
+body{
+  margin:0;
+  background:#f5f6f8;
+  color:#202124;
+  font-family:Arial,Helvetica,sans-serif;
+}
+
+.page{
+  max-width:720px;
+  margin:auto;
+  padding:18px 14px 40px;
+}
+
+.header{
+  background:#fff;
+  border-radius:12px;
+  padding:18px 16px;
+  margin-bottom:14px;
+  box-shadow:0 2px 8px #00000012;
+}
+
+h1{
+  margin:0;
+  font-size:28px;
+}
+
+.subtitle{
+  margin:7px 0 18px;
+  color:#70757a;
+  font-size:14px;
+}
+
+select{
+  width:100%;
+  padding:14px;
+  font-size:16px;
+  border:1px solid #dadce0;
+  border-radius:8px;
+  background:#fff;
+}
+
+.card{
+  background:#fff;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 2px 8px #00000012;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+th{
+  background:#f8f9fa;
+  color:#5f6368;
+  text-align:left;
+  font-size:13px;
+  font-weight:700;
+  padding:13px 14px;
+  border-bottom:1px solid #dadce0;
+}
+
+th:last-child,
+td:last-child{
+  text-align:right;
+}
+
+td{
+  padding:15px 14px;
+  border-bottom:1px solid #eee;
+  font-size:15px;
+}
+
+.amount{
+  font-weight:600;
+}
+
+.total td{
+  font-weight:700;
+  font-size:16px;
+  border-top:2px solid #ddd;
+  border-bottom:0;
+}
+
+.footer{
+  text-align:center;
+  color:#80868b;
+  font-size:12px;
+  margin-top:15px;
+}
+
+.error{
+  padding:20px;
+  text-align:center;
+  color:#b00020;
+}
 </style>
 </head>
+
 <body>
+
 <div class="page">
+
   <div class="header">
     <h1>Monthly Money List</h1>
-    <p class="subtitle">Public view — anyone with this link can see the list</p>
-    <select class="month" id="month">
-      <option value="july">July 2026</option>
-      <option value="august">August 2026</option>
-    </select>
+
+    <p class="subtitle">
+      Public view — anyone with this link can see the list
+    </p>
+
+    <select id="month"></select>
   </div>
 
   <div class="card">
     <table>
       <thead>
-        <tr><th>Name</th><th>Amount</th></tr>
+        <tr>
+          <th>Name</th>
+          <th>Amount</th>
+        </tr>
       </thead>
-      <tbody id="list"></tbody>
+
+      <tbody id="list">
+        <tr>
+          <td colspan="2">Loading...</td>
+        </tr>
+      </tbody>
+
       <tfoot>
-        <tr class="total"><td>Total</td><td id="total">₹0</td></tr>
+        <tr class="total">
+          <td>Total</td>
+          <td id="total">₹0</td>
+        </tr>
       </tfoot>
     </table>
   </div>
-  <div class="footer">Last updated list • Public view</div>
+
+  <div class="footer">
+    Last updated list • Public view<br>
+    Developer: SAROJ
+  </div>
+
 </div>
 
 <script>
-const data={
-  july:[
-    ["Lucky bhaina",300],
-    ["Batu bhai",300],
-    ["Saroj",300],
-    ["Deepak bhai",300],
-    ["Satya",300],
-    ["Daku",300],
-    ["Dsm",300],
-    ["Chandan",300],
-    ["Sibuna",300],
-    ["Akhu",300],
-    ["Bapi",300],
-    ["Pata",300],
-    ["Lipa bhaina",300]
-  ],
-  august:[
-    ["Saroj",300]
-    ["Daku",300]
-    ["Batu",300]
-  ]
-};
 
-function money(n){
-  return new Intl.NumberFormat("en-IN",{style:"currency",currency:"INR",maximumFractionDigits:0}).format(n);
+const SHEET_ID =
+"1AxAm7z3pv-p5x5iAOObnJ0AgHIp_kzIIyDvAbdSLFwY";
+
+const SHEET_NAME = "Sheet1";
+
+const SHEET_URL =
+"https://docs.google.com/spreadsheets/d/" +
+SHEET_ID +
+"/gviz/tq?tqx=out:json&sheet=" +
+encodeURIComponent(SHEET_NAME);
+
+
+let data = {};
+
+
+function money(value){
+
+  const number = Number(value) || 0;
+
+  return new Intl.NumberFormat("en-IN", {
+    style:"currency",
+    currency:"INR",
+    maximumFractionDigits:0
+  }).format(number);
+
 }
+
+
+function cleanText(value){
+
+  return String(value ?? "").trim();
+
+}
+
+
+function escapeHtml(text){
+
+  return String(text)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+async function loadSheet(){
+
+  try{
+
+    const response = await fetch(SHEET_URL);
+
+    if(!response.ok){
+      throw new Error("Unable to read Google Sheet");
+    }
+
+    const text = await response.text();
+
+    const start = text.indexOf("(");
+    const end = text.lastIndexOf(")");
+
+    if(start === -1 || end === -1){
+      throw new Error("Invalid Google Sheet response");
+    }
+
+    const json = JSON.parse(
+      text.substring(start + 1, end)
+    );
+
+    const rows = json.table.rows;
+
+    data = {};
+
+    rows.forEach(row => {
+
+      const cells = row.c || [];
+
+      const name =
+        cleanText(cells[0]?.v);
+
+      const month =
+        cleanText(cells[1]?.v).toUpperCase();
+
+      const amount =
+        Number(cells[2]?.v) || 0;
+
+      if(!name || !month){
+        return;
+      }
+
+      if(!data[month]){
+        data[month] = [];
+      }
+
+      data[month].push({
+        name:name,
+        amount:amount
+      });
+
+    });
+
+
+    createMonthList();
+
+  }catch(error){
+
+    console.error(error);
+
+    document.getElementById("list").innerHTML =
+      `<tr>
+        <td colspan="2" class="error">
+          Unable to load the list.
+        </td>
+      </tr>`;
+
+  }
+
+}
+
+
+function createMonthList(){
+
+  const select =
+    document.getElementById("month");
+
+  select.innerHTML = "";
+
+  const months =
+    Object.keys(data);
+
+  months.forEach(month => {
+
+    const option =
+      document.createElement("option");
+
+    option.value = month;
+
+    option.textContent =
+      month.charAt(0) +
+      month.slice(1).toLowerCase() +
+      " 2026";
+
+    select.appendChild(option);
+
+  });
+
+
+  if(months.length > 0){
+
+    select.value = months[0];
+
+    render();
+
+  }
+
+}
+
+
 function render(){
-  const rows=data[document.getElementById("month").value]||[];
-  document.getElementById("list").innerHTML=rows.map(x=>
-    `<tr><td>${escapeHtml(x[0])}</td><td class="amount">${money(x[1])}</td></tr>`
-  ).join("");
-  document.getElementById("total").textContent=money(rows.reduce((s,x)=>s+Number(x[1]),0));
+
+  const month =
+    document.getElementById("month").value;
+
+  const rows =
+    data[month] || [];
+
+  document.getElementById("list").innerHTML =
+    rows.map(item => {
+
+      return `
+        <tr>
+          <td>${escapeHtml(item.name)}</td>
+          <td class="amount">${money(item.amount)}</td>
+        </tr>
+      `;
+
+    }).join("");
+
+
+  const total =
+    rows.reduce(
+      (sum,item) =>
+        sum + Number(item.amount),
+      0
+    );
+
+
+  document.getElementById("total")
+    .textContent = money(total);
+
 }
-function escapeHtml(s){
-  return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
-}
-document.getElementById("month").addEventListener("change",render);
-render();
+
+
+document
+  .getElementById("month")
+  .addEventListener("change",render);
+
+
+loadSheet();
+
 </script>
+
 </body>
 </html>
