@@ -2,191 +2,544 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Monthly Money List</title>
+<title>BALIPADA JATRA COMUNITY</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
 
 body{
   margin:0;
-  background:#f5f6f8;
-  color:#202124;
+  min-height:100vh;
   font-family:Arial,Helvetica,sans-serif;
+  color:#fff;
+  background:
+    radial-gradient(circle at 10% 0%,#164e63 0,transparent 30%),
+    radial-gradient(circle at 100% 10%,#4c1d95 0,transparent 30%),
+    #06101d;
 }
 
-.page{
-  max-width:720px;
+.app{
+  width:100%;
+  max-width:760px;
   margin:auto;
-  padding:18px 14px 40px;
+  padding:16px 14px 35px;
 }
 
-.header{
-  background:#fff;
-  border-radius:12px;
-  padding:18px 16px;
-  margin-bottom:14px;
-  box-shadow:0 2px 8px #00000012;
+/* HEADER */
+
+.hero{
+  position:relative;
+  overflow:hidden;
+  padding:20px;
+  border-radius:28px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(14,27,45,.78);
+  backdrop-filter:blur(20px);
+  box-shadow:0 20px 55px rgba(0,0,0,.35);
 }
 
-h1{
+.brand{
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+.logo{
+  width:72px;
+  height:72px;
+  border-radius:21px;
+  object-fit:cover;
+  border:1px solid rgba(255,255,255,.2);
+  box-shadow:0 8px 25px rgba(0,0,0,.4);
+}
+
+.community{
   margin:0;
-  font-size:28px;
+  font-size:19px;
+  font-weight:900;
+  letter-spacing:.3px;
 }
 
-.subtitle{
-  margin:7px 0 18px;
-  color:#70757a;
+.title{
+  margin:6px 0 0;
+  color:#9fb0c7;
+  font-size:12px;
+  letter-spacing:1px;
+  font-weight:700;
+}
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  margin-top:17px;
+  padding:8px 12px;
+  border-radius:50px;
+  background:rgba(66,217,255,.08);
+  border:1px solid rgba(66,217,255,.18);
+  color:#bcefff;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.8px;
+}
+
+.dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#42e6a4;
+  box-shadow:0 0 12px #42e6a4;
+}
+
+/* STATS */
+
+.stats{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:12px;
+}
+
+.stat{
+  padding:16px;
+  border-radius:21px;
+  border:1px solid rgba(255,255,255,.09);
+  background:rgba(14,27,45,.78);
+  box-shadow:0 12px 35px rgba(0,0,0,.2);
+}
+
+.stat-label{
+  color:#9fb0c7;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.8px;
+  text-transform:uppercase;
+}
+
+.stat-value{
+  margin-top:7px;
+  font-size:23px;
+  font-weight:900;
+}
+
+/* FILTER */
+
+.toolbar{
+  position:sticky;
+  top:10px;
+  z-index:10;
+
+  display:flex;
+  gap:8px;
+
+  margin:14px 0;
+
+  padding:8px;
+
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.1);
+
+  background:rgba(6,16,29,.78);
+  backdrop-filter:blur(18px);
+}
+
+.search{
+  flex:1;
+  min-width:0;
+
+  padding:12px 13px;
+
+  border:0;
+  outline:0;
+
+  border-radius:13px;
+
+  background:rgba(255,255,255,.06);
+
+  color:#fff;
+
   font-size:14px;
 }
 
+.search::placeholder{
+  color:#7f91a9;
+}
+
 select{
-  width:100%;
-  padding:14px;
-  font-size:16px;
-  border:1px solid #dadce0;
-  border-radius:8px;
-  background:#fff;
+  max-width:145px;
+
+  padding:0 10px;
+
+  border:0;
+  outline:0;
+
+  border-radius:13px;
+
+  background:rgba(255,255,255,.06);
+
+  color:#fff;
+
+  font-weight:800;
 }
 
-.card{
-  background:#fff;
-  border-radius:12px;
+option{
+  background:#0b1727;
+}
+
+/* LIST */
+
+.list{
+  display:grid;
+  gap:10px;
+}
+
+.row{
+  display:flex;
+  align-items:center;
+  gap:12px;
+
+  padding:13px;
+
+  border-radius:21px;
+
+  border:1px solid rgba(255,255,255,.09);
+
+  background:rgba(14,27,45,.78);
+
+  box-shadow:0 10px 35px rgba(0,0,0,.18);
+
+  transition:.2s;
+}
+
+.row:active{
+  transform:scale(.985);
+}
+
+.avatar{
+  width:45px;
+  height:45px;
+
+  flex:0 0 45px;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:15px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(66,217,255,.2),
+      rgba(139,92,246,.25)
+    );
+
+  border:1px solid rgba(255,255,255,.08);
+
+  font-weight:900;
+}
+
+.info{
+  min-width:0;
+  flex:1;
+}
+
+.name{
+  font-size:14px;
+  font-weight:900;
+
+  white-space:nowrap;
   overflow:hidden;
-  box-shadow:0 2px 8px #00000012;
+  text-overflow:ellipsis;
 }
 
-table{
-  width:100%;
-  border-collapse:collapse;
-}
+.month{
+  margin-top:4px;
 
-th{
-  background:#f8f9fa;
-  color:#5f6368;
-  text-align:left;
-  font-size:13px;
+  color:#8193ab;
+
+  font-size:10px;
   font-weight:700;
-  padding:13px 14px;
-  border-bottom:1px solid #dadce0;
-}
-
-th:last-child,
-td:last-child{
-  text-align:right;
-}
-
-td{
-  padding:15px 14px;
-  border-bottom:1px solid #eee;
-  font-size:15px;
 }
 
 .amount{
-  font-weight:600;
-}
+  text-align:right;
 
-.total td{
-  font-weight:700;
   font-size:16px;
-  border-top:2px solid #ddd;
-  border-bottom:0;
+  font-weight:900;
 }
 
-.footer{
-  text-align:center;
-  color:#80868b;
-  font-size:12px;
-  margin-top:15px;
+.amount small{
+  display:block;
+
+  margin-top:3px;
+
+  color:#71839c;
+
+  font-size:8px;
+  letter-spacing:.5px;
 }
 
-.error{
-  padding:20px;
+/* EMPTY */
+
+.empty{
+  padding:35px 10px;
+
   text-align:center;
-  color:#b00020;
+
+  color:#7f91a9;
+
+  border:1px dashed rgba(255,255,255,.12);
+
+  border-radius:20px;
+}
+
+/* FOOTER */
+
+footer{
+  padding:25px 0 5px;
+
+  text-align:center;
+
+  color:#71839c;
+
+  font-size:10px;
+
+  letter-spacing:.6px;
+}
+
+@media(max-width:430px){
+
+  .community{
+    font-size:16px;
+  }
+
+  .logo{
+    width:64px;
+    height:64px;
+  }
+
+  select{
+    max-width:125px;
+  }
+
 }
 </style>
 </head>
 
 <body>
 
-<div class="page">
+<div class="app">
 
-  <div class="header">
-    <h1>Monthly Money List</h1>
+  <!-- HEADER -->
 
-    <p class="subtitle">
-      Public view — anyone with this link can see the list
-    </p>
+  <section class="hero">
 
-    <select id="month"></select>
+    <div class="brand">
+
+      <img
+        src="logo.png"
+        class="logo"
+        alt="Balipada Jatra logo"
+      >
+
+      <div>
+
+        <h1 class="community">
+          BALIPADA JATRA COMUNITY
+        </h1>
+
+        <p class="title">
+          MONEY COLLECTION LIST
+        </p>
+
+      </div>
+
+    </div>
+
+    <div class="badge">
+      <span class="dot"></span>
+      PUBLIC COLLECTION DASHBOARD
+    </div>
+
+  </section>
+
+
+  <!-- STATS -->
+
+  <section class="stats">
+
+    <div class="stat">
+
+      <div class="stat-label">
+        Total Collection
+      </div>
+
+      <div
+        class="stat-value"
+        id="total"
+      >
+        ₹0
+      </div>
+
+    </div>
+
+
+    <div class="stat">
+
+      <div class="stat-label">
+        Total Members
+      </div>
+
+      <div
+        class="stat-value"
+        id="count"
+      >
+        0
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- SEARCH + MONTH -->
+
+  <div class="toolbar">
+
+    <input
+      id="search"
+      class="search"
+      type="search"
+      placeholder="Search name..."
+    >
+
+    <select id="month">
+
+      <option value="ALL">
+        ALL MONTHS
+      </option>
+
+      <option value="JULY">
+        JULY 2026
+      </option>
+
+      <option value="AUGUST">
+        AUGUST 2026
+      </option>
+
+      <option value="SEPTEMBER">
+        SEPTEMBER 2026
+      </option>
+
+      <option value="OCTOBER">
+        OCTOBER 2026
+      </option>
+
+      <option value="NOVEMBER">
+        NOVEMBER 2026
+      </option>
+
+      <option value="DECEMBER">
+        DECEMBER 2026
+      </option>
+
+    </select>
+
   </div>
 
-  <div class="card">
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Amount</th>
-        </tr>
-      </thead>
 
-      <tbody id="list">
-        <tr>
-          <td colspan="2">Loading...</td>
-        </tr>
-      </tbody>
+  <!-- LIST -->
 
-      <tfoot>
-        <tr class="total">
-          <td>Total</td>
-          <td id="total">₹0</td>
-        </tr>
-      </tfoot>
-    </table>
-  </div>
+  <section
+    id="list"
+    class="list"
+  ></section>
 
-  <div class="footer">
-    Last updated list • Public view<br>
-    Developer: SAROJ
-  </div>
+
+  <!-- FOOTER -->
+
+  <footer>
+    DEVELOPED BY SAROJ
+  </footer>
 
 </div>
 
+
 <script>
 
-const SHEET_ID =
-"1AxAm7z3pv-p5x5iAOObnJ0AgHIp_kzIIyDvAbdSLFwY";
+/*
+================================================
+YOUR DATA
+================================================
 
-const SHEET_NAME = "Sheet1";
+NAME | AMOUNT | MONTH
 
-const SHEET_URL =
-"https://docs.google.com/spreadsheets/d/" +
-SHEET_ID +
-"/gviz/tq?tqx=out:json&sheet=" +
-encodeURIComponent(SHEET_NAME);
+Edit this section only if you are NOT using
+Google Sheet yet.
 
+*/
 
-let data = {};
+const data = [
+
+  ["LUCKY BHAINA",300,"JULY"],
+
+  ["BATU BHAI",300,"JULY"],
+
+  ["SAROJ",300,"JULY"],
+
+  ["DEEPAK BHAI",300,"JULY"],
+
+  ["DAKU",300,"JULY"],
+
+  ["DSM",300,"JULY"],
+
+  ["AKHU",300,"JULY"],
+
+  ["BAPI",300,"JULY"],
+
+  ["LIPA BHAINA",300,"JULY"],
+
+  ["SATYA",300,"JULY"],
+
+  ["SIBU",300,"JULY"],
+
+  ["PATA",300,"JULY"],
+
+  ["GAURA",300,"JULY"],
+
+  /*
+  ADD AUGUST DATA HERE
+
+  ["SAROJ",300,"AUGUST"],
+  ["BATU BHAI",300,"AUGUST"],
+
+  */
+
+];
 
 
 function money(value){
 
-  const number = Number(value) || 0;
-
-  return new Intl.NumberFormat("en-IN", {
-    style:"currency",
-    currency:"INR",
-    maximumFractionDigits:0
-  }).format(number);
+  return "₹" +
+    Number(value || 0)
+      .toLocaleString("en-IN");
 
 }
 
 
-function cleanText(value){
+function initials(name){
 
-  return String(value ?? "").trim();
+  return name
+    .trim()
+    .split(/\s+/)
+    .slice(0,2)
+    .map(word => word[0])
+    .join("")
+    .toUpperCase();
 
 }
 
@@ -203,143 +556,47 @@ function escapeHtml(text){
 }
 
 
-async function loadSheet(){
+function render(){
 
-  try{
+  const search =
+    document
+      .getElementById("search")
+      .value
+      .trim()
+      .toUpperCase();
 
-    const response = await fetch(SHEET_URL);
 
-    if(!response.ok){
-      throw new Error("Unable to read Google Sheet");
-    }
+  const month =
+    document
+      .getElementById("month")
+      .value;
 
-    const text = await response.text();
 
-    const start = text.indexOf("(");
-    const end = text.lastIndexOf(")");
-
-    if(start === -1 || end === -1){
-      throw new Error("Invalid Google Sheet response");
-    }
-
-    const json = JSON.parse(
-      text.substring(start + 1, end)
-    );
-
-    const rows = json.table.rows;
-
-    data = {};
-
-    rows.forEach(row => {
-
-      const cells = row.c || [];
+  const filtered =
+    data.filter(item => {
 
       const name =
-        cleanText(cells[0]?.v);
+        item[0].toUpperCase();
 
-      const month =
-        cleanText(cells[1]?.v).toUpperCase();
+      const itemMonth =
+        item[2].toUpperCase();
 
-      const amount =
-        Number(cells[2]?.v) || 0;
+      const matchName =
+        name.includes(search);
 
-      if(!name || !month){
-        return;
-      }
+      const matchMonth =
+        month === "ALL" ||
+        itemMonth === month;
 
-      if(!data[month]){
-        data[month] = [];
-      }
-
-      data[month].push({
-        name:name,
-        amount:amount
-      });
+      return matchName && matchMonth;
 
     });
 
 
-    createMonthList();
-
-  }catch(error){
-
-    console.error(error);
-
-    document.getElementById("list").innerHTML =
-      `<tr>
-        <td colspan="2" class="error">
-          Unable to load the list.
-        </td>
-      </tr>`;
-
-  }
-
-}
-
-
-function createMonthList(){
-
-  const select =
-    document.getElementById("month");
-
-  select.innerHTML = "";
-
-  const months =
-    Object.keys(data);
-
-  months.forEach(month => {
-
-    const option =
-      document.createElement("option");
-
-    option.value = month;
-
-    option.textContent =
-      month.charAt(0) +
-      month.slice(1).toLowerCase() +
-      " 2026";
-
-    select.appendChild(option);
-
-  });
-
-
-  if(months.length > 0){
-
-    select.value = months[0];
-
-    render();
-
-  }
-
-}
-
-
-function render(){
-
-  const month =
-    document.getElementById("month").value;
-
-  const rows =
-    data[month] || [];
-
-  document.getElementById("list").innerHTML =
-    rows.map(item => {
-
-      return `
-        <tr>
-          <td>${escapeHtml(item.name)}</td>
-          <td class="amount">${money(item.amount)}</td>
-        </tr>
-      `;
-
-    }).join("");
-
-
   const total =
-    rows.reduce(
+    filtered.reduce(
       (sum,item) =>
-        sum + Number(item.amount),
+        sum + Number(item[1] || 0),
       0
     );
 
@@ -347,15 +604,96 @@ function render(){
   document.getElementById("total")
     .textContent = money(total);
 
+
+  document.getElementById("count")
+    .textContent = filtered.length;
+
+
+  const list =
+    document.getElementById("list");
+
+
+  if(filtered.length === 0){
+
+    list.innerHTML = `
+      <div class="empty">
+        NO COLLECTION DATA FOUND
+      </div>
+    `;
+
+    return;
+
+  }
+
+
+  list.innerHTML =
+    filtered.map(item => {
+
+      const name =
+        escapeHtml(item[0]);
+
+      const amount =
+        money(item[1]);
+
+      const itemMonth =
+        escapeHtml(item[2]);
+
+      return `
+
+        <article class="row">
+
+          <div class="avatar">
+            ${initials(item[0])}
+          </div>
+
+          <div class="info">
+
+            <div class="name">
+              ${name}
+            </div>
+
+            <div class="month">
+              ${itemMonth}
+            </div>
+
+          </div>
+
+          <div class="amount">
+
+            ${amount}
+
+            <small>
+              COLLECTION
+            </small>
+
+          </div>
+
+        </article>
+
+      `;
+
+    }).join("");
+
 }
 
 
 document
+  .getElementById("search")
+  .addEventListener(
+    "input",
+    render
+  );
+
+
+document
   .getElementById("month")
-  .addEventListener("change",render);
+  .addEventListener(
+    "change",
+    render
+  );
 
 
-loadSheet();
+render();
 
 </script>
 
