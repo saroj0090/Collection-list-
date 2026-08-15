@@ -22,6 +22,8 @@
     --dark:#252a3e;
     --muted:#777d91;
     --bg:#f8f7fc;
+    --green:#00a83b;
+    --green-dark:#009447;
 }
 
 html,
@@ -74,12 +76,12 @@ body{
 }
 
 .title{
-    color:#6420c8;
+    color:#ff0000;
 
     font-size:
         clamp(20px,5.5vw,30px);
 
-    font-weight:800;
+    font-weight:900;
 
     line-height:1.12;
 
@@ -423,10 +425,10 @@ body{
 }
 
 /* =========================
-   TOTAL
+   COLLECTED - MONTHLY
 ========================= */
 
-.total-box{
+.collected-box{
     margin-top:19px;
 
     min-height:88px;
@@ -456,13 +458,57 @@ body{
         rgba(101,28,255,.24);
 }
 
-.total-label{
+.collected-label{
     font-size:21px;
     font-weight:800;
 }
 
-.total-amount{
+.collected-amount{
     font-size:35px;
+    font-weight:900;
+}
+
+/* =========================
+   TOTAL - OVERALL
+========================= */
+
+.overall-total-box{
+    margin-top:12px;
+
+    min-height:88px;
+
+    padding:0 30px;
+
+    border-radius:46px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    color:white;
+
+    background:
+        linear-gradient(
+            110deg,
+            #009447,
+            #00a83b,
+            #00c853
+        );
+
+    box-shadow:
+        0 15px 32px
+        rgba(0,168,59,.22);
+}
+
+.overall-total-label{
+    font-size:25px;
+    font-weight:900;
+}
+
+.overall-total-amount{
+    font-size:38px;
     font-weight:900;
 }
 
@@ -495,6 +541,7 @@ body{
 
     .title{
         font-size:19px;
+        font-weight:900;
     }
 
     .subtitle{
@@ -540,8 +587,16 @@ body{
         font-size:19px;
     }
 
-    .total-amount{
+    .collected-amount{
         font-size:30px;
+    }
+
+    .overall-total-label{
+        font-size:22px;
+    }
+
+    .overall-total-amount{
+        font-size:32px;
     }
 }
 </style>
@@ -563,7 +618,7 @@ body{
             <div>
 
                 <div class="title">
-                    BALIPADA JATRA COMMUNITY 
+                    BALIPADA JATRA COMMUNITY
                 </div>
 
                 <div class="subtitle">
@@ -639,18 +694,37 @@ body{
 
 
     <!-- =========================
-         TOTAL
+         MONTHLY COLLECTED
     ========================= -->
 
-    <div class="total-box">
+    <div class="collected-box">
 
-        <div class="total-label">
+        <div class="collected-label">
+            COLLECTED
+        </div>
+
+        <div
+            id="collectedAmount"
+            class="collected-amount">
+            ₹0
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         OVERALL TOTAL
+    ========================= -->
+
+    <div class="overall-total-box">
+
+        <div class="overall-total-label">
             TOTAL
         </div>
 
         <div
-            id="totalAmount"
-            class="total-amount">
+            id="overallTotalAmount"
+            class="overall-total-amount">
             ₹0
         </div>
 
@@ -700,18 +774,6 @@ const SHEET_NAME =
    ========================================================== */
 
 const START_YEAR = 2026;
-
-/*
-   JavaScript month:
-
-   January = 0
-   February = 1
-   March = 2
-   April = 3
-   May = 4
-   June = 5
-   July = 6
-*/
 
 const START_MONTH = 6;
 
@@ -768,9 +830,14 @@ const collectionList =
         "collectionList"
     );
 
-const totalAmount =
+const collectedAmount =
     document.getElementById(
-        "totalAmount"
+        "collectedAmount"
+    );
+
+const overallTotalAmount =
+    document.getElementById(
+        "overallTotalAmount"
     );
 
 
@@ -852,11 +919,6 @@ function generateMonths(){
 
     }
 
-
-    /*
-       Automatically select
-       the current month.
-    */
 
     const currentValue =
         now.getFullYear() +
@@ -1047,40 +1109,20 @@ function loadGoogleSheet(){
                             row.c || [];
 
 
-                        /*
-                           COLUMN A
-                           NAME
-                        */
-
                         const name =
                             cells[0]?.v ??
                             "";
 
-
-                        /*
-                           COLUMN B
-                           MONTH
-                        */
 
                         const month =
                             cells[1]?.v ??
                             "";
 
 
-                        /*
-                           COLUMN C
-                           AMOUNT
-                        */
-
                         const amountValue =
                             cells[2]?.v ??
                             0;
 
-
-                        /*
-                           COLUMN D
-                           YEAR
-                        */
 
                         const yearValue =
                             cells[3]?.v ??
@@ -1172,13 +1214,6 @@ function loadGoogleSheet(){
 
         };
 
-
-    /*
-       Google Visualization API
-
-       This is the working connection
-       to Sheet1.
-    */
 
     const sheetURL =
         "https://docs.google.com/spreadsheets/d/" +
@@ -1285,6 +1320,45 @@ function getSelectedMonthData(){
 
 
 /* ==========================================================
+   GET OVERALL TOTAL
+   ========================================================== */
+
+/*
+   IMPORTANT:
+
+   This total is NOT the selected month.
+
+   It adds ALL collection amounts
+   from ALL months in the Google Sheet.
+
+   Example:
+
+   JULY     = ₹3,900
+   AUGUST   = ₹900
+
+   TOTAL    = ₹4,800
+*/
+
+function getOverallTotal(){
+
+    return allData.reduce(
+        function(sum,item){
+
+            return (
+                sum +
+                Number(
+                    item.amount || 0
+                )
+            );
+
+        },
+        0
+    );
+
+}
+
+
+/* ==========================================================
    RENDER COLLECTION
    ========================================================== */
 
@@ -1305,3 +1379,266 @@ function renderCollection(){
 
 
     if(search){
+
+        rows =
+            rows.filter(
+                function(item){
+
+                    return item.name
+                        .toUpperCase()
+                        .includes(search);
+
+                }
+            );
+
+    }
+
+
+    /*
+       MONTHLY COLLECTION
+
+       This is only for the
+       selected month.
+    */
+
+    const monthlyTotal =
+        rows.reduce(
+            function(sum,item){
+
+                return (
+                    sum +
+                    Number(
+                        item.amount || 0
+                    )
+                );
+
+            },
+            0
+        );
+
+
+    /*
+       OVERALL COLLECTION
+
+       This is ALL months.
+    */
+
+    const overallTotal =
+        getOverallTotal();
+
+
+    /*
+       UPDATE MONTHLY COLLECTED
+    */
+
+    collectedAmount.textContent =
+        "₹" +
+        monthlyTotal.toLocaleString(
+            "en-IN"
+        );
+
+
+    /*
+       UPDATE OVERALL TOTAL
+    */
+
+    overallTotalAmount.textContent =
+        "₹" +
+        overallTotal.toLocaleString(
+            "en-IN"
+        );
+
+
+    /*
+       EMPTY
+    */
+
+    if(rows.length === 0){
+
+        collectionList.innerHTML = `
+            <div class="empty">
+                NO COLLECTION DATA FOUND
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    /*
+       MEMBER CARDS
+    */
+
+    collectionList.innerHTML =
+        rows.map(
+            function(item){
+
+                return `
+
+                <div class="member-card">
+
+                    <div class="avatar">
+
+                        <div
+                            class="avatar-head">
+                        </div>
+
+                        <div
+                            class="avatar-body">
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="member-name">
+
+                        ${escapeHTML(
+                            item.name
+                        )}
+
+                    </div>
+
+
+                    <div
+                        class="amount">
+
+                        ₹${Number(
+                            item.amount
+                        ).toLocaleString(
+                            "en-IN"
+                        )}
+
+                    </div>
+
+                </div>
+
+                `;
+
+            }
+        ).join("");
+
+}
+
+
+/* ==========================================================
+   ERROR
+   ========================================================== */
+
+function showError(message){
+
+    collectionList.innerHTML = `
+        <div class="error">
+
+            <strong>
+                COLLECTION DATA UNAVAILABLE
+            </strong>
+
+            ${escapeHTML(message)}
+
+        </div>
+    `;
+
+
+    collectedAmount.textContent =
+        "₹0";
+
+    overallTotalAmount.textContent =
+        "₹0";
+
+}
+
+
+/* ==========================================================
+   ESCAPE HTML
+   ========================================================== */
+
+function escapeHTML(value){
+
+    return String(value)
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+/* ==========================================================
+   MONTH CHANGE
+   ========================================================== */
+
+monthSelect.addEventListener(
+    "change",
+    function(){
+
+        selectedMonth =
+            this.value;
+
+        renderCollection();
+
+    }
+);
+
+
+/* ==========================================================
+   SEARCH
+   ========================================================== */
+
+searchInput.addEventListener(
+    "input",
+    function(){
+
+        searchText =
+            this.value;
+
+        renderCollection();
+
+    }
+);
+
+
+/* ==========================================================
+   START
+   ========================================================== */
+
+generateMonths();
+
+loadGoogleSheet();
+
+
+/*
+   Refresh Sheet1 every 60 seconds.
+*/
+
+setInterval(
+    loadGoogleSheet,
+    60000
+);
+
+</script>
+
+</body>
+</html>
