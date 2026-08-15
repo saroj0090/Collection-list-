@@ -5,7 +5,7 @@
 
 <meta name="viewport"
       content="width=device-width, initial-scale=1.0,
-               maximum-scale=1.0, user-scalable=no">
+      maximum-scale=1.0, user-scalable=no">
 
 <title>BALIPADA JATRA COMUNITY</title>
 
@@ -19,13 +19,13 @@
 
 :root{
     --purple:#6817ee;
-    --purple2:#9625ff;
     --dark:#252a3e;
     --muted:#777d91;
     --bg:#f8f7fc;
 }
 
-html,body{
+html,
+body{
     width:100%;
     min-height:100%;
 }
@@ -38,6 +38,7 @@ body{
         Roboto,
         Arial,
         sans-serif;
+
     background:var(--bg);
     color:var(--dark);
 }
@@ -51,7 +52,7 @@ body{
     max-width:560px;
     min-height:100vh;
     margin:0 auto;
-    padding:16px 16px 35px;
+    padding:18px 16px 35px;
 }
 
 /* =========================
@@ -63,106 +64,36 @@ body{
 }
 
 .header-row{
-    min-height:68px;
-    position:relative;
+    min-height:70px;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    padding:0 55px;
+
+    text-align:center;
 }
 
 .title{
     color:#6420c8;
-    font-size:clamp(19px,5.5vw,30px);
+
+    font-size:
+        clamp(20px,5.5vw,30px);
+
     font-weight:800;
+
     line-height:1.12;
-    text-align:center;
+
     white-space:nowrap;
 }
 
 .subtitle{
     margin-top:7px;
+
     color:var(--muted);
+
     font-size:18px;
+
     font-weight:600;
-    text-align:center;
-}
-
-/* MENU */
-
-.menu-btn{
-    position:absolute;
-    left:0;
-    top:7px;
-    width:52px;
-    height:52px;
-    border:0;
-    background:transparent;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.menu-icon{
-    width:43px;
-    height:31px;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-}
-
-.menu-icon span{
-    width:100%;
-    height:6px;
-    border-radius:10px;
-    background:var(--purple);
-}
-
-/* BELL */
-
-.notification-btn{
-    position:absolute;
-    right:0;
-    top:7px;
-    width:52px;
-    height:52px;
-    border:0;
-    background:transparent;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.bell{
-    width:29px;
-    height:30px;
-    border:4px solid var(--purple);
-    border-radius:16px 16px 8px 8px;
-    position:relative;
-}
-
-.bell:before{
-    content:"";
-    position:absolute;
-    width:4px;
-    height:8px;
-    background:var(--purple);
-    left:50%;
-    top:-8px;
-    transform:translateX(-50%);
-    border-radius:5px;
-}
-
-.bell:after{
-    content:"";
-    position:absolute;
-    width:11px;
-    height:4px;
-    border-radius:5px;
-    background:var(--purple);
-    bottom:-8px;
-    left:50%;
-    transform:translateX(-50%);
 }
 
 /* =========================
@@ -172,20 +103,26 @@ body{
 .logo-wrap{
     width:108px;
     height:108px;
+
     margin:20px auto 25px;
 
     padding:5px;
 
     background:#fff;
-    border:1px solid rgba(100,30,220,.08);
+
+    border:1px solid
+        rgba(100,30,220,.08);
 
     border-radius:50%;
 
     overflow:hidden;
 
     box-shadow:
-        0 8px 28px rgba(100,30,220,.20),
-        0 0 0 1px rgba(100,30,220,.05);
+        0 8px 28px
+        rgba(100,30,220,.20),
+
+        0 0 0 1px
+        rgba(100,30,220,.05);
 
     display:flex;
     align-items:center;
@@ -195,13 +132,16 @@ body{
 .logo-wrap img{
     width:100%;
     height:100%;
+
     object-fit:cover;
+
     border-radius:50%;
+
     display:block;
 }
 
 /* =========================
-   MONTH
+   MONTH SELECTOR
 ========================= */
 
 .month-box{
@@ -222,26 +162,33 @@ body{
         );
 
     box-shadow:
-        0 15px 32px rgba(101,28,255,.24);
+        0 15px 32px
+        rgba(101,28,255,.24);
 }
 
 .month-select{
     width:100%;
     height:100%;
 
-    padding:0 70px 0 28px;
+    padding:
+        0 70px 0 28px;
 
     border:0;
     outline:none;
 
     background:transparent;
+
     color:white;
 
-    font-size:clamp(22px,6vw,29px);
+    font-size:
+        clamp(22px,6vw,29px);
+
     font-weight:800;
 
     appearance:none;
     -webkit-appearance:none;
+
+    cursor:pointer;
 }
 
 .month-select option{
@@ -281,17 +228,20 @@ body{
     padding:0 20px;
 
     border:1px solid #e4e2ec;
+
     border-radius:21px;
 
     outline:none;
 
     background:white;
+
     color:var(--dark);
 
     font-size:18px;
 
     box-shadow:
-        0 7px 22px rgba(35,28,70,.06);
+        0 7px 22px
+        rgba(35,28,70,.06);
 }
 
 .search::placeholder{
@@ -303,7 +253,7 @@ body{
 }
 
 /* =========================
-   COLLECTION
+   COLLECTION LIST
 ========================= */
 
 .collection-list{
@@ -317,9 +267,10 @@ body{
 
     width:100%;
 
-    padding:12px 18px 12px 15px;
+    padding:
+        12px 18px 12px 15px;
 
-    background:#fff;
+    background:white;
 
     border-radius:27px;
 
@@ -327,10 +278,23 @@ body{
     align-items:center;
 
     box-shadow:
-        0 7px 23px rgba(35,28,70,.08);
+        0 7px 23px
+        rgba(35,28,70,.08);
 
-    border:1px solid rgba(50,40,80,.035);
+    border:1px solid
+        rgba(50,40,80,.035);
+
+    transition:
+        transform .15s ease;
 }
+
+.member-card:active{
+    transform:scale(.985);
+}
+
+/* =========================
+   AVATAR
+========================= */
 
 .avatar{
     width:66px;
@@ -379,6 +343,10 @@ body{
     background:#fff;
 }
 
+/* =========================
+   NAME
+========================= */
+
 .member-name{
     flex:1;
     min-width:0;
@@ -395,9 +363,15 @@ body{
     text-transform:uppercase;
 
     overflow:hidden;
+
     text-overflow:ellipsis;
+
     white-space:nowrap;
 }
+
+/* =========================
+   AMOUNT
+========================= */
 
 .amount{
     margin-left:10px;
@@ -413,7 +387,7 @@ body{
 }
 
 /* =========================
-   EMPTY / LOADING / ERROR
+   LOADING / EMPTY / ERROR
 ========================= */
 
 .loading,
@@ -436,12 +410,15 @@ body{
     font-weight:600;
 
     box-shadow:
-        0 7px 22px rgba(35,28,70,.05);
+        0 7px 22px
+        rgba(35,28,70,.05);
 }
 
 .error strong{
     display:block;
+
     margin-bottom:10px;
+
     color:#651cff;
 }
 
@@ -459,7 +436,9 @@ body{
     border-radius:46px;
 
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
 
     color:white;
@@ -473,7 +452,8 @@ body{
         );
 
     box-shadow:
-        0 15px 32px rgba(101,28,255,.24);
+        0 15px 32px
+        rgba(101,28,255,.24);
 }
 
 .total-label{
@@ -498,6 +478,7 @@ body{
     color:#73798d;
 
     font-size:15px;
+
     font-weight:600;
 }
 
@@ -510,11 +491,6 @@ body{
     .app{
         padding-left:13px;
         padding-right:13px;
-    }
-
-    .header-row{
-        padding-left:48px;
-        padding-right:48px;
     }
 
     .title{
@@ -536,12 +512,14 @@ body{
 
     .member-card{
         min-height:88px;
+
         padding-right:14px;
     }
 
     .avatar{
         width:60px;
         height:60px;
+
         min-width:60px;
     }
 
@@ -569,29 +547,18 @@ body{
 </style>
 </head>
 
+
 <body>
 
 <div class="app">
 
-    <!-- HEADER -->
+    <!-- =========================
+         HEADER
+    ========================= -->
 
     <header class="header">
 
         <div class="header-row">
-
-            <button
-                class="menu-btn"
-                type="button"
-                aria-label="Menu">
-
-                <div class="menu-icon">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-
-            </button>
-
 
             <div>
 
@@ -605,22 +572,14 @@ body{
 
             </div>
 
-
-            <button
-                class="notification-btn"
-                type="button"
-                aria-label="Notifications">
-
-                <div class="bell"></div>
-
-            </button>
-
         </div>
 
     </header>
 
 
-    <!-- LOGO -->
+    <!-- =========================
+         LOGO
+    ========================= -->
 
     <div class="logo-wrap">
 
@@ -632,7 +591,9 @@ body{
     </div>
 
 
-    <!-- MONTH -->
+    <!-- =========================
+         MONTH
+    ========================= -->
 
     <div class="month-box">
 
@@ -646,7 +607,9 @@ body{
     </div>
 
 
-    <!-- SEARCH -->
+    <!-- =========================
+         SEARCH
+    ========================= -->
 
     <div class="search-wrap">
 
@@ -660,7 +623,9 @@ body{
     </div>
 
 
-    <!-- COLLECTION -->
+    <!-- =========================
+         COLLECTION
+    ========================= -->
 
     <main
         id="collectionList"
@@ -673,7 +638,9 @@ body{
     </main>
 
 
-    <!-- TOTAL -->
+    <!-- =========================
+         TOTAL
+    ========================= -->
 
     <div class="total-box">
 
@@ -690,7 +657,9 @@ body{
     </div>
 
 
-    <!-- FOOTER -->
+    <!-- =========================
+         FOOTER
+    ========================= -->
 
     <footer class="footer">
 
@@ -709,18 +678,6 @@ body{
    GOOGLE SHEET CONNECTION
    ========================================================== */
 
-/*
-   YOUR SHEET:
-
-   https://docs.google.com/spreadsheets/d/
-   1AxAm7z3pv-p5x5iAOObnJ0AgHIp_kzIIyDvAbdSLFwY/
-
-   SHEET TAB:
-
-   Sheet1
-*/
-
-
 const SHEET_ID =
 "1AxAm7z3pv-p5x5iAOObnJ0AgHIp_kzIIyDvAbdSLFwY";
 
@@ -729,7 +686,7 @@ const SHEET_NAME =
 
 
 /*
-   YOUR COLUMNS ARE:
+   Sheet1 columns:
 
    A = NAME
    B = MONTH
@@ -742,21 +699,10 @@ const SHEET_NAME =
    COLLECTION START
    ========================================================== */
 
-/*
-   Collection starts from:
-
-   JULY 2026
-
-   It will never show months before July 2026.
-*/
-
 const START_YEAR = 2026;
 
-const START_MONTH = 6;
-
-
 /*
-   JavaScript months:
+   JavaScript month:
 
    January = 0
    February = 1
@@ -766,6 +712,8 @@ const START_MONTH = 6;
    June = 5
    July = 6
 */
+
+const START_MONTH = 6;
 
 
 /* ==========================================================
@@ -806,58 +754,29 @@ let searchText = "";
    ========================================================== */
 
 const monthSelect =
-document.getElementById(
-    "monthSelect"
-);
+    document.getElementById(
+        "monthSelect"
+    );
 
 const searchInput =
-document.getElementById(
-    "searchInput"
-);
+    document.getElementById(
+        "searchInput"
+    );
 
 const collectionList =
-document.getElementById(
-    "collectionList"
-);
+    document.getElementById(
+        "collectionList"
+    );
 
 const totalAmount =
-document.getElementById(
-    "totalAmount"
-);
+    document.getElementById(
+        "totalAmount"
+    );
 
 
 /* ==========================================================
    GENERATE MONTHS
    ========================================================== */
-
-/*
-   Example:
-
-   August 2026:
-
-   JULY 2026
-   AUGUST 2026
-
-   It will NOT show:
-
-   SEPTEMBER
-   OCTOBER
-   NOVEMBER
-   etc.
-
-   When January 2027 arrives:
-
-   JULY 2026
-   AUGUST 2026
-   ...
-   DECEMBER 2026
-   JANUARY 2027
-
-   Then February 2027 will be added automatically.
-
-   Previous months remain available.
-*/
-
 
 function generateMonths(){
 
@@ -895,7 +814,6 @@ function generateMonths(){
         const year =
             date.getFullYear();
 
-
         const month =
             date.getMonth();
 
@@ -911,7 +829,10 @@ function generateMonths(){
             "-" +
             String(
                 month + 1
-            ).padStart(2,"0");
+            ).padStart(
+                2,
+                "0"
+            );
 
 
         option.textContent =
@@ -934,7 +855,7 @@ function generateMonths(){
 
     /*
        Automatically select
-       the CURRENT month.
+       the current month.
     */
 
     const currentValue =
@@ -942,7 +863,10 @@ function generateMonths(){
         "-" +
         String(
             now.getMonth() + 1
-        ).padStart(2,"0");
+        ).padStart(
+            2,
+            "0"
+        );
 
 
     const currentOption =
@@ -959,18 +883,15 @@ function generateMonths(){
         selectedMonth =
             currentValue;
 
-    }else{
-
-        /*
-           Safety fallback.
-        */
+    }
+    else{
 
         selectedMonth =
             monthSelect
-            .options[
-                monthSelect
-                .options.length - 1
-            ]?.value || "";
+                .options[
+                    monthSelect
+                        .options.length - 1
+                ]?.value || "";
 
     }
 
@@ -988,7 +909,9 @@ function generateMonths(){
 function normalizeMonth(value){
 
     const month =
-        String(value || "")
+        String(
+            value || ""
+        )
         .trim()
         .toUpperCase();
 
@@ -1001,13 +924,11 @@ function normalizeMonth(value){
         JANUARY:
         "JANUARY",
 
-
         FEB:
         "FEBRUARY",
 
         FEBRUARY:
         "FEBRUARY",
-
 
         MAR:
         "MARCH",
@@ -1015,17 +936,14 @@ function normalizeMonth(value){
         MARCH:
         "MARCH",
 
-
         APR:
         "APRIL",
 
         APRIL:
         "APRIL",
 
-
         MAY:
         "MAY",
-
 
         JUN:
         "JUNE",
@@ -1033,20 +951,17 @@ function normalizeMonth(value){
         JUNE:
         "JUNE",
 
-
         JUL:
         "JULY",
 
         JULY:
         "JULY",
 
-
         AUG:
         "AUGUST",
 
         AUGUST:
         "AUGUST",
-
 
         SEP:
         "SEPTEMBER",
@@ -1057,20 +972,17 @@ function normalizeMonth(value){
         SEPTEMBER:
         "SEPTEMBER",
 
-
         OCT:
         "OCTOBER",
 
         OCTOBER:
         "OCTOBER",
 
-
         NOV:
         "NOVEMBER",
 
         NOVEMBER:
         "NOVEMBER",
-
 
         DEC:
         "DECEMBER",
@@ -1090,41 +1002,19 @@ function normalizeMonth(value){
    LOAD GOOGLE SHEET
    ========================================================== */
 
-/*
-   IMPORTANT:
-
-   This uses Google's Visualization API.
-
-   It reads:
-
-   Sheet1
-
-   A = NAME
-   B = MONTH
-   C = AMOUNT
-   D = YEAR
-*/
-
-
 function loadGoogleSheet(){
 
-    collectionList.innerHTML =
-        `
+    collectionList.innerHTML = `
         <div class="loading">
             Loading collection...
         </div>
-        `;
+    `;
 
 
     const callbackName =
         "sheetCallback_" +
         Date.now();
 
-
-    /*
-       Google calls this function
-       when Sheet1 data arrives.
-    */
 
     window[callbackName] =
         function(response){
@@ -1137,7 +1027,7 @@ function loadGoogleSheet(){
                 ){
 
                     throw new Error(
-                        "Google Sheet returned no table."
+                        "Google Sheet returned no data."
                     );
 
                 }
@@ -1199,7 +1089,7 @@ function loadGoogleSheet(){
 
                         if(
                             String(name)
-                            .trim() === ""
+                                .trim() === ""
                         ){
 
                             return;
@@ -1223,8 +1113,7 @@ function loadGoogleSheet(){
                             Number(
                                 String(
                                     yearValue
-                                )
-                                .trim()
+                                ).trim()
                             );
 
 
@@ -1253,7 +1142,7 @@ function loadGoogleSheet(){
 
 
                 console.log(
-                    "Google Sheet loaded:",
+                    "Google Sheet data:",
                     allData
                 );
 
@@ -1261,10 +1150,11 @@ function loadGoogleSheet(){
                 renderCollection();
 
 
-            }catch(error){
+            }
+            catch(error){
 
                 console.error(
-                    "Sheet error:",
+                    "Google Sheet error:",
                     error
                 );
 
@@ -1276,10 +1166,6 @@ function loadGoogleSheet(){
             }
 
 
-            /*
-               Clean callback.
-            */
-
             delete window[
                 callbackName
             ];
@@ -1288,13 +1174,10 @@ function loadGoogleSheet(){
 
 
     /*
-       IMPORTANT FIX:
+       Google Visualization API
 
-       responseHandler must be inside
-       tqx.
-
-       This is what allows Google
-       Sheets to call our function.
+       This is the working connection
+       to Sheet1.
     */
 
     const sheetURL =
@@ -1331,7 +1214,7 @@ function loadGoogleSheet(){
 
 
             showError(
-                "Google Sheet connection failed. Make sure Sheet1 is shared as Anyone with the link → Viewer."
+                "Google Sheet connection failed. Check that Sheet1 is shared as Anyone with the link → Viewer."
             );
 
 
@@ -1350,7 +1233,7 @@ function loadGoogleSheet(){
 
 
 /* ==========================================================
-   GET DATA FOR SELECTED MONTH
+   GET SELECTED MONTH DATA
    ========================================================== */
 
 function getSelectedMonthData(){
@@ -1417,8 +1300,8 @@ function renderCollection(){
 
     const search =
         searchText
-        .trim()
-        .toUpperCase();
+            .trim()
+            .toUpperCase();
 
 
     if(search){
@@ -1445,10 +1328,12 @@ function renderCollection(){
         rows.reduce(
             function(sum,item){
 
-                return sum +
+                return (
+                    sum +
                     Number(
                         item.amount || 0
-                    );
+                    )
+                );
 
             },
             0
@@ -1463,17 +1348,16 @@ function renderCollection(){
 
 
     /*
-       NO DATA
+       EMPTY
     */
 
     if(rows.length === 0){
 
-        collectionList.innerHTML =
-            `
+        collectionList.innerHTML = `
             <div class="empty">
                 NO COLLECTION DATA FOUND
             </div>
-            `;
+        `;
 
         return;
 
@@ -1542,8 +1426,7 @@ function renderCollection(){
 
 function showError(message){
 
-    collectionList.innerHTML =
-        `
+    collectionList.innerHTML = `
         <div class="error">
 
             <strong>
@@ -1553,7 +1436,7 @@ function showError(message){
             ${escapeHTML(message)}
 
         </div>
-        `;
+    `;
 
 
     totalAmount.textContent =
@@ -1633,7 +1516,7 @@ searchInput.addEventListener(
 
 
 /* ==========================================================
-   START WEBSITE
+   START
    ========================================================== */
 
 generateMonths();
@@ -1642,12 +1525,7 @@ loadGoogleSheet();
 
 
 /*
-   Automatically check Sheet1
-   every 60 seconds.
-
-   So if you edit Google Sheet,
-   the website can update without
-   changing index.html.
+   Refresh Sheet1 every 60 seconds.
 */
 
 setInterval(
