@@ -443,19 +443,20 @@ body{
 
     justify-content:space-between;
 
-    color:white;
+    color:#252a3e;
 
     background:
         linear-gradient(
             110deg,
-            #5c18df,
-            #791df5,
-            #982aff
+            #ffd000 0%,
+            #ffe66b 35%,
+            #fff4b8 65%,
+            #ffffff 100%
         );
 
     box-shadow:
         0 15px 32px
-        rgba(101,28,255,.24);
+        rgba(255,208,0,.22);
 }
 
 .collected-label{
@@ -602,14 +603,9 @@ body{
 </style>
 </head>
 
-
 <body>
 
 <div class="app">
-
-    <!-- =========================
-         HEADER
-    ========================= -->
 
     <header class="header">
 
@@ -632,10 +628,6 @@ body{
     </header>
 
 
-    <!-- =========================
-         LOGO
-    ========================= -->
-
     <div class="logo-wrap">
 
         <img
@@ -645,10 +637,6 @@ body{
 
     </div>
 
-
-    <!-- =========================
-         MONTH
-    ========================= -->
 
     <div class="month-box">
 
@@ -662,10 +650,6 @@ body{
     </div>
 
 
-    <!-- =========================
-         SEARCH
-    ========================= -->
-
     <div class="search-wrap">
 
         <input
@@ -678,10 +662,6 @@ body{
     </div>
 
 
-    <!-- =========================
-         COLLECTION
-    ========================= -->
-
     <main
         id="collectionList"
         class="collection-list">
@@ -692,10 +672,6 @@ body{
 
     </main>
 
-
-    <!-- =========================
-         MONTHLY COLLECTED
-    ========================= -->
 
     <div class="collected-box">
 
@@ -712,10 +688,6 @@ body{
     </div>
 
 
-    <!-- =========================
-         OVERALL TOTAL
-    ========================= -->
-
     <div class="overall-total-box">
 
         <div class="overall-total-label">
@@ -731,10 +703,6 @@ body{
     </div>
 
 
-    <!-- =========================
-         FOOTER
-    ========================= -->
-
     <footer class="footer">
 
         Public View
@@ -748,39 +716,15 @@ body{
 
 <script>
 
-/* ==========================================================
-   GOOGLE SHEET CONNECTION
-   ========================================================== */
-
 const SHEET_ID =
 "1AxAm7z3pv-p5x5iAOObnJ0AgHIp_kzIIyDvAbdSLFwY";
 
 const SHEET_NAME =
 "Sheet1";
 
-
-/*
-   Sheet1 columns:
-
-   A = NAME
-   B = MONTH
-   C = AMOUNT
-   D = YEAR
-*/
-
-
-/* ==========================================================
-   COLLECTION START
-   ========================================================== */
-
 const START_YEAR = 2026;
 
 const START_MONTH = 6;
-
-
-/* ==========================================================
-   MONTH NAMES
-   ========================================================== */
 
 const MONTH_NAMES = [
 
@@ -799,21 +743,12 @@ const MONTH_NAMES = [
 
 ];
 
-
-/* ==========================================================
-   VARIABLES
-   ========================================================== */
-
 let allData = [];
 
 let selectedMonth = "";
 
 let searchText = "";
 
-
-/* ==========================================================
-   ELEMENTS
-   ========================================================== */
 
 const monthSelect =
     document.getElementById(
@@ -841,14 +776,9 @@ const overallTotalAmount =
     );
 
 
-/* ==========================================================
-   GENERATE MONTHS
-   ========================================================== */
-
 function generateMonths(){
 
     monthSelect.innerHTML = "";
-
 
     const startDate =
         new Date(
@@ -857,10 +787,8 @@ function generateMonths(){
             1
         );
 
-
     const now =
         new Date();
-
 
     const currentMonthDate =
         new Date(
@@ -869,10 +797,8 @@ function generateMonths(){
             1
         );
 
-
     let date =
         new Date(startDate);
-
 
     while(
         date <= currentMonthDate
@@ -884,12 +810,10 @@ function generateMonths(){
         const month =
             date.getMonth();
 
-
         const option =
             document.createElement(
                 "option"
             );
-
 
         option.value =
             year +
@@ -901,24 +825,20 @@ function generateMonths(){
                 "0"
             );
 
-
         option.textContent =
             MONTH_NAMES[month] +
             " " +
             year;
 
-
         monthSelect.appendChild(
             option
         );
-
 
         date.setMonth(
             date.getMonth() + 1
         );
 
     }
-
 
     const currentValue =
         now.getFullYear() +
@@ -930,7 +850,6 @@ function generateMonths(){
             "0"
         );
 
-
     const currentOption =
         [...monthSelect.options]
         .find(
@@ -938,7 +857,6 @@ function generateMonths(){
                 option.value ===
                 currentValue
         );
-
 
     if(currentOption){
 
@@ -957,16 +875,11 @@ function generateMonths(){
 
     }
 
-
     monthSelect.value =
         selectedMonth;
 
 }
 
-
-/* ==========================================================
-   NORMALIZE MONTH
-   ========================================================== */
 
 function normalizeMonth(value){
 
@@ -977,92 +890,50 @@ function normalizeMonth(value){
         .trim()
         .toUpperCase();
 
-
     const map = {
 
-        JAN:
-        "JANUARY",
+        JAN:"JANUARY",
+        JANUARY:"JANUARY",
 
-        JANUARY:
-        "JANUARY",
+        FEB:"FEBRUARY",
+        FEBRUARY:"FEBRUARY",
 
-        FEB:
-        "FEBRUARY",
+        MAR:"MARCH",
+        MARCH:"MARCH",
 
-        FEBRUARY:
-        "FEBRUARY",
+        APR:"APRIL",
+        APRIL:"APRIL",
 
-        MAR:
-        "MARCH",
+        MAY:"MAY",
 
-        MARCH:
-        "MARCH",
+        JUN:"JUNE",
+        JUNE:"JUNE",
 
-        APR:
-        "APRIL",
+        JUL:"JULY",
+        JULY:"JULY",
 
-        APRIL:
-        "APRIL",
+        AUG:"AUGUST",
+        AUGUST:"AUGUST",
 
-        MAY:
-        "MAY",
+        SEP:"SEPTEMBER",
+        SEPT:"SEPTEMBER",
+        SEPTEMBER:"SEPTEMBER",
 
-        JUN:
-        "JUNE",
+        OCT:"OCTOBER",
+        OCTOBER:"OCTOBER",
 
-        JUNE:
-        "JUNE",
+        NOV:"NOVEMBER",
+        NOVEMBER:"NOVEMBER",
 
-        JUL:
-        "JULY",
-
-        JULY:
-        "JULY",
-
-        AUG:
-        "AUGUST",
-
-        AUGUST:
-        "AUGUST",
-
-        SEP:
-        "SEPTEMBER",
-
-        SEPT:
-        "SEPTEMBER",
-
-        SEPTEMBER:
-        "SEPTEMBER",
-
-        OCT:
-        "OCTOBER",
-
-        OCTOBER:
-        "OCTOBER",
-
-        NOV:
-        "NOVEMBER",
-
-        NOVEMBER:
-        "NOVEMBER",
-
-        DEC:
-        "DECEMBER",
-
-        DECEMBER:
-        "DECEMBER"
+        DEC:"DECEMBER",
+        DECEMBER:"DECEMBER"
 
     };
-
 
     return map[month] || month;
 
 }
 
-
-/* ==========================================================
-   LOAD GOOGLE SHEET
-   ========================================================== */
 
 function loadGoogleSheet(){
 
@@ -1072,11 +943,9 @@ function loadGoogleSheet(){
         </div>
     `;
 
-
     const callbackName =
         "sheetCallback_" +
         Date.now();
-
 
     window[callbackName] =
         function(response){
@@ -1094,13 +963,10 @@ function loadGoogleSheet(){
 
                 }
 
-
                 const rows =
                     response.table.rows || [];
 
-
                 allData = [];
-
 
                 rows.forEach(
                     function(row){
@@ -1108,26 +974,21 @@ function loadGoogleSheet(){
                         const cells =
                             row.c || [];
 
-
                         const name =
                             cells[0]?.v ??
                             "";
-
 
                         const month =
                             cells[1]?.v ??
                             "";
 
-
                         const amountValue =
                             cells[2]?.v ??
                             0;
 
-
                         const yearValue =
                             cells[3]?.v ??
                             "";
-
 
                         if(
                             String(name)
@@ -1137,7 +998,6 @@ function loadGoogleSheet(){
                             return;
 
                         }
-
 
                         const amount =
                             Number(
@@ -1150,14 +1010,12 @@ function loadGoogleSheet(){
                                 )
                             ) || 0;
 
-
                         const year =
                             Number(
                                 String(
                                     yearValue
                                 ).trim()
                             );
-
 
                         allData.push({
 
@@ -1182,15 +1040,7 @@ function loadGoogleSheet(){
                     }
                 );
 
-
-                console.log(
-                    "Google Sheet data:",
-                    allData
-                );
-
-
                 renderCollection();
-
 
             }
             catch(error){
@@ -1200,13 +1050,11 @@ function loadGoogleSheet(){
                     error
                 );
 
-
                 showError(
                     "Unable to read Sheet1 data."
                 );
 
             }
-
 
             delete window[
                 callbackName
@@ -1235,23 +1083,15 @@ function loadGoogleSheet(){
             "script"
         );
 
-
     script.src =
         sheetURL;
-
 
     script.onerror =
         function(){
 
-            console.error(
-                "Google Sheet connection failed."
-            );
-
-
             showError(
                 "Google Sheet connection failed. Check that Sheet1 is shared as Anyone with the link → Viewer."
             );
-
 
             delete window[
                 callbackName
@@ -1259,17 +1099,12 @@ function loadGoogleSheet(){
 
         };
 
-
     document.body.appendChild(
         script
     );
 
 }
 
-
-/* ==========================================================
-   GET SELECTED MONTH DATA
-   ========================================================== */
 
 function getSelectedMonthData(){
 
@@ -1279,24 +1114,19 @@ function getSelectedMonthData(){
 
     }
 
-
     const parts =
         selectedMonth.split("-");
-
 
     const selectedYear =
         Number(parts[0]);
 
-
     const selectedMonthNumber =
         Number(parts[1]);
-
 
     const selectedMonthName =
         MONTH_NAMES[
             selectedMonthNumber - 1
         ];
-
 
     return allData.filter(
         function(item){
@@ -1319,26 +1149,6 @@ function getSelectedMonthData(){
 }
 
 
-/* ==========================================================
-   GET OVERALL TOTAL
-   ========================================================== */
-
-/*
-   IMPORTANT:
-
-   This total is NOT the selected month.
-
-   It adds ALL collection amounts
-   from ALL months in the Google Sheet.
-
-   Example:
-
-   JULY     = ₹3,900
-   AUGUST   = ₹900
-
-   TOTAL    = ₹4,800
-*/
-
 function getOverallTotal(){
 
     return allData.reduce(
@@ -1358,25 +1168,15 @@ function getOverallTotal(){
 }
 
 
-/* ==========================================================
-   RENDER COLLECTION
-   ========================================================== */
-
 function renderCollection(){
 
     let rows =
         getSelectedMonthData();
 
-
-    /*
-       SEARCH
-    */
-
     const search =
         searchText
             .trim()
             .toUpperCase();
-
 
     if(search){
 
@@ -1393,14 +1193,6 @@ function renderCollection(){
 
     }
 
-
-    /*
-       MONTHLY COLLECTION
-
-       This is only for the
-       selected month.
-    */
-
     const monthlyTotal =
         rows.reduce(
             function(sum,item){
@@ -1416,20 +1208,8 @@ function renderCollection(){
             0
         );
 
-
-    /*
-       OVERALL COLLECTION
-
-       This is ALL months.
-    */
-
     const overallTotal =
         getOverallTotal();
-
-
-    /*
-       UPDATE MONTHLY COLLECTED
-    */
 
     collectedAmount.textContent =
         "₹" +
@@ -1437,21 +1217,11 @@ function renderCollection(){
             "en-IN"
         );
 
-
-    /*
-       UPDATE OVERALL TOTAL
-    */
-
     overallTotalAmount.textContent =
         "₹" +
         overallTotal.toLocaleString(
             "en-IN"
         );
-
-
-    /*
-       EMPTY
-    */
 
     if(rows.length === 0){
 
@@ -1464,11 +1234,6 @@ function renderCollection(){
         return;
 
     }
-
-
-    /*
-       MEMBER CARDS
-    */
 
     collectionList.innerHTML =
         rows.map(
@@ -1490,7 +1255,6 @@ function renderCollection(){
 
                     </div>
 
-
                     <div
                         class="member-name">
 
@@ -1499,7 +1263,6 @@ function renderCollection(){
                         )}
 
                     </div>
-
 
                     <div
                         class="amount">
@@ -1522,10 +1285,6 @@ function renderCollection(){
 }
 
 
-/* ==========================================================
-   ERROR
-   ========================================================== */
-
 function showError(message){
 
     collectionList.innerHTML = `
@@ -1540,7 +1299,6 @@ function showError(message){
         </div>
     `;
 
-
     collectedAmount.textContent =
         "₹0";
 
@@ -1549,10 +1307,6 @@ function showError(message){
 
 }
 
-
-/* ==========================================================
-   ESCAPE HTML
-   ========================================================== */
 
 function escapeHTML(value){
 
@@ -1586,10 +1340,6 @@ function escapeHTML(value){
 }
 
 
-/* ==========================================================
-   MONTH CHANGE
-   ========================================================== */
-
 monthSelect.addEventListener(
     "change",
     function(){
@@ -1602,10 +1352,6 @@ monthSelect.addEventListener(
     }
 );
 
-
-/* ==========================================================
-   SEARCH
-   ========================================================== */
 
 searchInput.addEventListener(
     "input",
@@ -1620,18 +1366,10 @@ searchInput.addEventListener(
 );
 
 
-/* ==========================================================
-   START
-   ========================================================== */
-
 generateMonths();
 
 loadGoogleSheet();
 
-
-/*
-   Refresh Sheet1 every 60 seconds.
-*/
 
 setInterval(
     loadGoogleSheet,
