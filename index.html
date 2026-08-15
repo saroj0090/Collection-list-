@@ -22,6 +22,8 @@
     --dark:#252a3e;
     --muted:#777d91;
     --bg:#f8f7fc;
+    --green:#16a34a;
+    --green-dark:#087f36;
 }
 
 html,
@@ -43,6 +45,10 @@ body{
     color:var(--dark);
 }
 
+/* =========================
+   APP
+========================= */
+
 .app{
     width:100%;
     max-width:560px;
@@ -61,24 +67,34 @@ body{
 
 .header-row{
     min-height:70px;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     text-align:center;
 }
 
 .title{
     color:#6420c8;
-    font-size:clamp(20px,5.5vw,30px);
+
+    font-size:
+        clamp(20px,5.5vw,30px);
+
     font-weight:800;
+
     line-height:1.12;
+
     white-space:nowrap;
 }
 
 .subtitle{
     margin-top:7px;
+
     color:var(--muted);
+
     font-size:18px;
+
     font-weight:600;
 }
 
@@ -89,16 +105,26 @@ body{
 .logo-wrap{
     width:108px;
     height:108px;
+
     margin:20px auto 25px;
+
     padding:5px;
+
     background:#fff;
-    border:1px solid rgba(100,30,220,.08);
+
+    border:1px solid
+        rgba(100,30,220,.08);
+
     border-radius:50%;
+
     overflow:hidden;
 
     box-shadow:
-        0 8px 28px rgba(100,30,220,.20),
-        0 0 0 1px rgba(100,30,220,.05);
+        0 8px 28px
+        rgba(100,30,220,.20),
+
+        0 0 0 1px
+        rgba(100,30,220,.05);
 
     display:flex;
     align-items:center;
@@ -108,8 +134,11 @@ body{
 .logo-wrap img{
     width:100%;
     height:100%;
+
     object-fit:cover;
+
     border-radius:50%;
+
     display:block;
 }
 
@@ -120,8 +149,10 @@ body{
 .month-box{
     width:100%;
     height:94px;
+
     position:relative;
     overflow:hidden;
+
     border-radius:28px;
 
     background:
@@ -133,25 +164,32 @@ body{
         );
 
     box-shadow:
-        0 15px 32px rgba(101,28,255,.24);
+        0 15px 32px
+        rgba(101,28,255,.24);
 }
 
 .month-select{
     width:100%;
     height:100%;
 
-    padding:0 70px 0 28px;
+    padding:
+        0 70px 0 28px;
 
     border:0;
     outline:none;
+
     background:transparent;
+
     color:white;
 
-    font-size:clamp(22px,6vw,29px);
+    font-size:
+        clamp(22px,6vw,29px);
+
     font-weight:800;
 
     appearance:none;
     -webkit-appearance:none;
+
     cursor:pointer;
 }
 
@@ -162,6 +200,7 @@ body{
 
 .arrow{
     position:absolute;
+
     right:29px;
     top:32px;
 
@@ -172,6 +211,7 @@ body{
     border-bottom:6px solid white;
 
     transform:rotate(45deg);
+
     pointer-events:none;
 }
 
@@ -190,16 +230,20 @@ body{
     padding:0 20px;
 
     border:1px solid #e4e2ec;
+
     border-radius:21px;
+
     outline:none;
 
     background:white;
+
     color:var(--dark);
 
     font-size:18px;
 
     box-shadow:
-        0 7px 22px rgba(35,28,70,.06);
+        0 7px 22px
+        rgba(35,28,70,.06);
 }
 
 .search::placeholder{
@@ -222,22 +266,28 @@ body{
 
 .member-card{
     min-height:94px;
+
     width:100%;
 
-    padding:12px 18px 12px 15px;
+    padding:
+        12px 18px 12px 15px;
 
     background:white;
+
     border-radius:27px;
 
     display:flex;
     align-items:center;
 
     box-shadow:
-        0 7px 23px rgba(35,28,70,.08);
+        0 7px 23px
+        rgba(35,28,70,.08);
 
-    border:1px solid rgba(50,40,80,.035);
+    border:1px solid
+        rgba(50,40,80,.035);
 
-    transition:transform .15s ease;
+    transition:
+        transform .15s ease;
 }
 
 .member-card:active{
@@ -251,9 +301,11 @@ body{
 .avatar{
     width:66px;
     height:66px;
+
     min-width:66px;
 
     position:relative;
+
     border-radius:50%;
 
     background:
@@ -274,6 +326,7 @@ body{
     left:23px;
 
     border-radius:50%;
+
     background:#fff;
 }
 
@@ -304,13 +357,17 @@ body{
 
     color:#252a3e;
 
-    font-size:clamp(19px,5.2vw,25px);
+    font-size:
+        clamp(19px,5.2vw,25px);
+
     font-weight:700;
 
     text-transform:uppercase;
 
     overflow:hidden;
+
     text-overflow:ellipsis;
+
     white-space:nowrap;
 }
 
@@ -323,7 +380,9 @@ body{
 
     color:#252a3e;
 
-    font-size:clamp(18px,5vw,24px);
+    font-size:
+        clamp(18px,5vw,24px);
+
     font-weight:800;
 
     white-space:nowrap;
@@ -339,6 +398,7 @@ body{
     width:100%;
 
     background:white;
+
     border-radius:25px;
 
     padding:42px 20px;
@@ -348,33 +408,40 @@ body{
     color:#858b9d;
 
     font-size:18px;
+
     font-weight:600;
 
     box-shadow:
-        0 7px 22px rgba(35,28,70,.05);
+        0 7px 22px
+        rgba(35,28,70,.05);
 }
 
 .error strong{
     display:block;
+
     margin-bottom:10px;
+
     color:#651cff;
 }
 
-/* =========================
-   MONTHLY COLLECTED
-========================= */
+/* ==========================================================
+   🟣 COLLECTED
+   SMALL PURPLE BOX
+========================================================== */
 
 .total-box{
     margin-top:19px;
 
-    min-height:88px;
+    min-height:76px;
 
-    padding:0 30px;
+    padding:0 25px;
 
-    border-radius:46px;
+    border-radius:40px;
 
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
 
     color:white;
@@ -388,55 +455,70 @@ body{
         );
 
     box-shadow:
-        0 15px 32px rgba(101,28,255,.24);
+        0 12px 27px
+        rgba(101,28,255,.20);
 }
 
 .total-label{
-    font-size:21px;
-    font-weight:900;
+    font-size:19px;
+
+    font-weight:800;
+
+    text-transform:uppercase;
 }
 
 .total-amount{
-    font-size:35px;
+    font-size:30px;
+
     font-weight:900;
 }
 
-/* =========================
-   GRAND TOTAL
-========================= */
+/* ==========================================================
+   🟢 TOTAL
+   BIG GREEN BOX
+========================================================== */
 
 .grand-total-box{
     margin-top:14px;
 
-    min-height:72px;
+    min-height:94px;
 
-    padding:0 25px;
+    padding:0 28px;
 
-    border-radius:38px;
+    border-radius:47px;
 
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
 
-    background:white;
+    color:white;
 
-    border:1px solid rgba(80,70,100,.08);
+    background:
+        linear-gradient(
+            110deg,
+            #087f36 0%,
+            #16a34a 50%,
+            #22c55e 100%
+        );
 
     box-shadow:
-        0 7px 22px rgba(35,28,70,.07);
+        0 14px 30px
+        rgba(22,163,74,.24);
 }
 
 .grand-total-label{
-    color:#222838;
+    font-size:23px;
 
-    font-size:19px;
     font-weight:900;
+
+    text-transform:uppercase;
 }
 
 .grand-total-amount{
-    color:#222838;
+    font-size:36px;
 
-    font-size:27px;
     font-weight:900;
 }
 
@@ -452,6 +534,7 @@ body{
     color:#73798d;
 
     font-size:15px;
+
     font-weight:600;
 }
 
@@ -485,12 +568,14 @@ body{
 
     .member-card{
         min-height:88px;
+
         padding-right:14px;
     }
 
     .avatar{
         width:60px;
         height:60px;
+
         min-width:60px;
     }
 
@@ -511,26 +596,43 @@ body{
         font-size:19px;
     }
 
-    .total-amount{
-        font-size:30px;
+    .total-box{
+        min-height:70px;
+        padding:0 22px;
     }
 
-    .grand-total-label{
+    .total-label{
         font-size:17px;
     }
 
+    .total-amount{
+        font-size:28px;
+    }
+
+    .grand-total-box{
+        min-height:88px;
+        padding:0 24px;
+    }
+
+    .grand-total-label{
+        font-size:21px;
+    }
+
     .grand-total-amount{
-        font-size:24px;
+        font-size:32px;
     }
 }
 </style>
 </head>
 
+
 <body>
 
 <div class="app">
 
-    <!-- HEADER -->
+    <!-- =========================
+         HEADER
+    ========================= -->
 
     <header class="header">
 
@@ -553,7 +655,9 @@ body{
     </header>
 
 
-    <!-- LOGO -->
+    <!-- =========================
+         LOGO
+    ========================= -->
 
     <div class="logo-wrap">
 
@@ -565,7 +669,9 @@ body{
     </div>
 
 
-    <!-- MONTH -->
+    <!-- =========================
+         MONTH
+    ========================= -->
 
     <div class="month-box">
 
@@ -579,7 +685,9 @@ body{
     </div>
 
 
-    <!-- SEARCH -->
+    <!-- =========================
+         SEARCH
+    ========================= -->
 
     <div class="search-wrap">
 
@@ -593,7 +701,9 @@ body{
     </div>
 
 
-    <!-- COLLECTION -->
+    <!-- =========================
+         COLLECTION
+    ========================= -->
 
     <main
         id="collectionList"
@@ -606,12 +716,14 @@ body{
     </main>
 
 
-    <!-- 🟣 MONTHLY COLLECTION -->
+    <!-- =========================
+         🟣 COLLECTED
+    ========================= -->
 
     <div class="total-box">
 
         <div class="total-label">
-            🟣 COLLECTED
+            COLLECTED
         </div>
 
         <div
@@ -623,12 +735,14 @@ body{
     </div>
 
 
-    <!-- 🟢 ALL COLLECTION TOTAL -->
+    <!-- =========================
+         🟢 TOTAL
+    ========================= -->
 
     <div class="grand-total-box">
 
         <div class="grand-total-label">
-            🟢 TOTAL
+            TOTAL
         </div>
 
         <div
@@ -640,7 +754,9 @@ body{
     </div>
 
 
-    <!-- FOOTER -->
+    <!-- =========================
+         FOOTER
+    ========================= -->
 
     <footer class="footer">
 
@@ -681,7 +797,12 @@ const SHEET_NAME =
 ========================================================== */
 
 const START_YEAR = 2026;
-const START_MONTH = 6; // JULY
+
+/*
+   July = 6
+*/
+
+const START_MONTH = 6;
 
 
 /* ==========================================================
@@ -775,6 +896,7 @@ function generateMonths(){
     let date =
         new Date(startDate);
 
+
     while(
         date <= currentMonthDate
     ){
@@ -785,10 +907,12 @@ function generateMonths(){
         const month =
             date.getMonth();
 
+
         const option =
             document.createElement(
                 "option"
             );
+
 
         option.value =
             year +
@@ -800,14 +924,17 @@ function generateMonths(){
                 "0"
             );
 
+
         option.textContent =
             MONTH_NAMES[month] +
             " " +
             year;
 
+
         monthSelect.appendChild(
             option
         );
+
 
         date.setMonth(
             date.getMonth() + 1
@@ -876,41 +1003,77 @@ function normalizeMonth(value){
 
     const map = {
 
-        JAN:"JANUARY",
-        JANUARY:"JANUARY",
+        JAN:
+        "JANUARY",
 
-        FEB:"FEBRUARY",
-        FEBRUARY:"FEBRUARY",
+        JANUARY:
+        "JANUARY",
 
-        MAR:"MARCH",
-        MARCH:"MARCH",
+        FEB:
+        "FEBRUARY",
 
-        APR:"APRIL",
-        APRIL:"APRIL",
+        FEBRUARY:
+        "FEBRUARY",
 
-        MAY:"MAY",
+        MAR:
+        "MARCH",
 
-        JUN:"JUNE",
-        JUNE:"JUNE",
+        MARCH:
+        "MARCH",
 
-        JUL:"JULY",
-        JULY:"JULY",
+        APR:
+        "APRIL",
 
-        AUG:"AUGUST",
-        AUGUST:"AUGUST",
+        APRIL:
+        "APRIL",
 
-        SEP:"SEPTEMBER",
-        SEPT:"SEPTEMBER",
-        SEPTEMBER:"SEPTEMBER",
+        MAY:
+        "MAY",
 
-        OCT:"OCTOBER",
-        OCTOBER:"OCTOBER",
+        JUN:
+        "JUNE",
 
-        NOV:"NOVEMBER",
-        NOVEMBER:"NOVEMBER",
+        JUNE:
+        "JUNE",
 
-        DEC:"DECEMBER",
-        DECEMBER:"DECEMBER"
+        JUL:
+        "JULY",
+
+        JULY:
+        "JULY",
+
+        AUG:
+        "AUGUST",
+
+        AUGUST:
+        "AUGUST",
+
+        SEP:
+        "SEPTEMBER",
+
+        SEPT:
+        "SEPTEMBER",
+
+        SEPTEMBER:
+        "SEPTEMBER",
+
+        OCT:
+        "OCTOBER",
+
+        OCTOBER:
+        "OCTOBER",
+
+        NOV:
+        "NOVEMBER",
+
+        NOVEMBER:
+        "NOVEMBER",
+
+        DEC:
+        "DECEMBER",
+
+        DECEMBER:
+        "DECEMBER"
 
     };
 
@@ -1051,6 +1214,7 @@ function loadGoogleSheet(){
 
                 renderCollection();
 
+
             }
             catch(error){
 
@@ -1179,7 +1343,7 @@ function getSelectedMonthData(){
 
 
 /* ==========================================================
-   GET MONTHLY TOTAL
+   MONTHLY COLLECTED
 ========================================================== */
 
 function getMonthlyTotal(){
@@ -1206,17 +1370,16 @@ function getMonthlyTotal(){
 
 
 /* ==========================================================
-   GET GRAND TOTAL
+   GRAND TOTAL
 ==========================================================
 
    Example:
 
-   JULY    = ₹1500
-   AUGUST  = ₹1800
-   SEPT    = ₹1500
+   JULY   ₹1500
+   AUGUST ₹1800
+   SEPT   ₹1500
 
-   TOTAL   = ₹4800
-
+   TOTAL = ₹4800
 ========================================================== */
 
 function getGrandTotal(){
@@ -1273,6 +1436,7 @@ function getGrandTotal(){
                     );
 
             }
+
             else if(
                 item.year ===
                 selectedYear
@@ -1310,22 +1474,25 @@ function renderCollection(){
 
 
     /*
-       IMPORTANT:
-       Monthly total is calculated BEFORE search.
-       So searching a member will NOT change
-       the monthly collection amount.
+       MONTHLY COLLECTED
+       is calculated before search.
     */
 
     const monthlyTotal =
         getMonthlyTotal();
 
 
+    /*
+       GRAND TOTAL
+       from July to selected month.
+    */
+
     const grandTotal =
         getGrandTotal();
 
 
     /*
-       🟣 COLLECTED
+       COLLECTED
     */
 
     totalAmount.textContent =
@@ -1336,7 +1503,7 @@ function renderCollection(){
 
 
     /*
-       🟢 TOTAL
+       TOTAL
     */
 
     grandTotalAmount.textContent =
