@@ -23,7 +23,6 @@
     --dark:#252a3e;
     --muted:#777d91;
     --bg:#f8f7fc;
-    --green:#00a83b;
 }
 
 html,
@@ -45,6 +44,7 @@ body{
     color:var(--dark);
 }
 
+
 /* =========================
    APP
 ========================= */
@@ -57,6 +57,7 @@ body{
     padding:18px 16px 35px;
 }
 
+
 /* =========================
    HEADER
 ========================= */
@@ -66,7 +67,7 @@ body{
 }
 
 .header-row{
-    min-height:75px;
+    min-height:70px;
 
     display:flex;
     align-items:center;
@@ -76,25 +77,23 @@ body{
 }
 
 .title{
-    color:#ff0000;
+    color:red;
 
-    font-size:
-        clamp(27px,7.5vw,40px);
+    font-size:25px;
 
-    font-weight:1000;
+    font-weight:900;
 
-    line-height:1.02;
+    line-height:1.1;
 
-    letter-spacing:-0.7px;
+    letter-spacing:-0.6px;
 
     white-space:nowrap;
 
-    text-shadow:
-        0 0 0 #ff0000;
+    text-align:center;
 }
 
 .subtitle{
-    margin-top:8px;
+    margin-top:7px;
 
     color:var(--muted);
 
@@ -102,6 +101,7 @@ body{
 
     font-weight:600;
 }
+
 
 /* =========================
    LOGO
@@ -146,6 +146,7 @@ body{
 
     display:block;
 }
+
 
 /* =========================
    MONTH SELECTOR
@@ -220,6 +221,7 @@ body{
     pointer-events:none;
 }
 
+
 /* =========================
    SEARCH
 ========================= */
@@ -258,6 +260,7 @@ body{
 .search:focus{
     border-color:#8a38ff;
 }
+
 
 /* =========================
    COLLECTION LIST
@@ -298,6 +301,7 @@ body{
 .member-card:active{
     transform:scale(.985);
 }
+
 
 /* =========================
    AVATAR
@@ -350,6 +354,7 @@ body{
     background:#fff;
 }
 
+
 /* =========================
    NAME
 ========================= */
@@ -376,6 +381,7 @@ body{
     white-space:nowrap;
 }
 
+
 /* =========================
    AMOUNT
 ========================= */
@@ -392,6 +398,7 @@ body{
 
     white-space:nowrap;
 }
+
 
 /* =========================
    LOADING / EMPTY / ERROR
@@ -429,19 +436,19 @@ body{
     color:#651cff;
 }
 
+
 /* =========================
-   COLLECTED
-   SELECTED MONTH ONLY
+   MONTHLY COLLECTED
 ========================= */
 
 .collected-box{
     margin-top:19px;
 
-    min-height:82px;
+    min-height:72px;
 
-    padding:0 30px;
+    padding:0 24px;
 
-    border-radius:42px;
+    border-radius:38px;
 
     display:flex;
 
@@ -449,42 +456,42 @@ body{
 
     justify-content:space-between;
 
-    color:white;
+    background:white;
 
-    background:
-        linear-gradient(
-            110deg,
-            #5c18df,
-            #791df5,
-            #982aff
-        );
+    border:1px solid #eceaf3;
 
     box-shadow:
-        0 15px 32px
-        rgba(101,28,255,.24);
+        0 7px 22px
+        rgba(35,28,70,.06);
 }
 
 .collected-label{
+    color:#6817ee;
+
     font-size:19px;
+
     font-weight:700;
 }
 
 .collected-amount{
-    font-size:31px;
+    color:#6817ee;
+
+    font-size:28px;
+
     font-weight:900;
 }
 
+
 /* =========================
-   TOTAL
-   ALL MONTHS
+   OVERALL TOTAL
 ========================= */
 
-.overall-total-box{
-    margin-top:12px;
+.total-box{
+    margin-top:13px;
 
     min-height:92px;
 
-    padding:0 30px;
+    padding:0 28px;
 
     border-radius:46px;
 
@@ -499,25 +506,28 @@ body{
     background:
         linear-gradient(
             110deg,
-            #009447,
-            #00a83b,
-            #00c853
+            #35a853,
+            #22a447,
+            #16963d
         );
 
     box-shadow:
-        0 15px 32px
-        rgba(0,168,59,.22);
+        0 14px 30px
+        rgba(35,160,70,.22);
 }
 
-.overall-total-label{
-    font-size:25px;
+.total-label{
+    font-size:23px;
+
     font-weight:900;
 }
 
-.overall-total-amount{
-    font-size:38px;
+.total-amount{
+    font-size:36px;
+
     font-weight:900;
 }
+
 
 /* =========================
    FOOTER
@@ -535,6 +545,7 @@ body{
     font-weight:600;
 }
 
+
 /* =========================
    SMALL MOBILE
 ========================= */
@@ -547,13 +558,9 @@ body{
     }
 
     .title{
-        font-size:24px;
+        font-size:23px;
 
-        font-weight:1000;
-
-        line-height:1.02;
-
-        letter-spacing:-0.5px;
+        letter-spacing:-0.7px;
     }
 
     .subtitle{
@@ -592,6 +599,7 @@ body{
 
     .member-name{
         margin-left:14px;
+
         font-size:19px;
     }
 
@@ -604,15 +612,15 @@ body{
     }
 
     .collected-amount{
-        font-size:28px;
+        font-size:25px;
     }
 
-    .overall-total-label{
+    .total-label{
         font-size:21px;
     }
 
-    .overall-total-amount{
-        font-size:31px;
+    .total-amount{
+        font-size:30px;
     }
 }
 
@@ -623,6 +631,7 @@ body{
 <body>
 
 <div class="app">
+
 
     <!-- HEADER -->
 
@@ -705,7 +714,7 @@ body{
     <div class="collected-box">
 
         <div class="collected-label">
-            COLLECTED
+            🟣 COLLECTED
         </div>
 
         <div
@@ -719,15 +728,15 @@ body{
 
     <!-- OVERALL TOTAL -->
 
-    <div class="overall-total-box">
+    <div class="total-box">
 
-        <div class="overall-total-label">
-            TOTAL
+        <div class="total-label">
+            🟢 TOTAL
         </div>
 
         <div
-            id="overallTotalAmount"
-            class="overall-total-amount">
+            id="totalAmount"
+            class="total-amount">
             ₹0
         </div>
 
@@ -749,6 +758,7 @@ body{
 
 <script>
 
+
 /* ==========================================================
    GOOGLE SHEET CONNECTION
 ========================================================== */
@@ -761,7 +771,7 @@ const SHEET_NAME =
 
 
 /*
-   SHEET COLUMNS
+   Sheet1 columns:
 
    A = NAME
    B = MONTH
@@ -836,19 +846,21 @@ const collectedAmount =
         "collectedAmount"
     );
 
-const overallTotalAmount =
+const totalAmount =
     document.getElementById(
-        "overallTotalAmount"
+        "totalAmount"
     );
 
 
 /* ==========================================================
    GENERATE MONTHS
+   JULY 2026 → CURRENT MONTH
 ========================================================== */
 
 function generateMonths(){
 
     monthSelect.innerHTML = "";
+
 
     const startDate =
         new Date(
@@ -857,8 +869,10 @@ function generateMonths(){
             1
         );
 
+
     const now =
         new Date();
+
 
     const currentMonthDate =
         new Date(
@@ -867,8 +881,10 @@ function generateMonths(){
             1
         );
 
+
     let date =
         new Date(startDate);
+
 
     while(
         date <= currentMonthDate
@@ -880,10 +896,12 @@ function generateMonths(){
         const month =
             date.getMonth();
 
+
         const option =
             document.createElement(
                 "option"
             );
+
 
         option.value =
             year +
@@ -895,22 +913,24 @@ function generateMonths(){
                 "0"
             );
 
+
         option.textContent =
             MONTH_NAMES[month] +
             " " +
             year;
 
+
         monthSelect.appendChild(
             option
         );
 
+
         date.setMonth(
             date.getMonth() + 1
         );
+
     }
 
-
-    /* Automatically select current month */
 
     const currentValue =
         now.getFullYear() +
@@ -1223,7 +1243,7 @@ function loadGoogleSheet(){
 
 
 /* ==========================================================
-   SELECTED MONTH DATA
+   GET SELECTED MONTH DATA
 ========================================================== */
 
 function getSelectedMonthData(){
@@ -1275,7 +1295,23 @@ function getSelectedMonthData(){
 
 
 /* ==========================================================
-   OVERALL TOTAL
+   GET OVERALL TOTAL
+==========================================================
+
+   IMPORTANT:
+
+   This is NOT the selected month's total.
+
+   It adds ALL collection amounts from
+   July 2026 through the current month.
+
+   Example:
+
+   July = ₹1500
+   August = ₹1800
+   September = ₹1500
+
+   TOTAL = ₹4800
 ========================================================== */
 
 function getOverallTotal(){
@@ -1283,12 +1319,52 @@ function getOverallTotal(){
     return allData.reduce(
         function(sum,item){
 
-            return (
-                sum +
-                Number(
-                    item.amount || 0
-                )
-            );
+            const itemDate =
+                new Date(
+                    item.year,
+                    MONTH_NAMES.indexOf(
+                        item.month
+                    ),
+                    1
+                );
+
+
+            const startDate =
+                new Date(
+                    START_YEAR,
+                    START_MONTH,
+                    1
+                );
+
+
+            const now =
+                new Date();
+
+
+            const currentMonth =
+                new Date(
+                    now.getFullYear(),
+                    now.getMonth(),
+                    1
+                );
+
+
+            if(
+                itemDate >= startDate &&
+                itemDate <= currentMonth
+            ){
+
+                return (
+                    sum +
+                    Number(
+                        item.amount || 0
+                    )
+                );
+
+            }
+
+
+            return sum;
 
         },
         0
@@ -1306,8 +1382,6 @@ function renderCollection(){
     let rows =
         getSelectedMonthData();
 
-
-    /* SEARCH */
 
     const search =
         searchText
@@ -1331,12 +1405,16 @@ function renderCollection(){
     }
 
 
-    /*
-       COLLECTED = SELECTED MONTH
-    */
+    /* =========================
+       MONTHLY COLLECTED
+    ========================= */
+
+    const monthlyRows =
+        getSelectedMonthData();
+
 
     const monthlyTotal =
-        rows.reduce(
+        monthlyRows.reduce(
             function(sum,item){
 
                 return (
@@ -1351,14 +1429,6 @@ function renderCollection(){
         );
 
 
-    /*
-       TOTAL = ALL MONTHS
-    */
-
-    const overallTotal =
-        getOverallTotal();
-
-
     collectedAmount.textContent =
         "₹" +
         monthlyTotal.toLocaleString(
@@ -1366,14 +1436,24 @@ function renderCollection(){
         );
 
 
-    overallTotalAmount.textContent =
+    /* =========================
+       OVERALL TOTAL
+    ========================= */
+
+    const overallTotal =
+        getOverallTotal();
+
+
+    totalAmount.textContent =
         "₹" +
         overallTotal.toLocaleString(
             "en-IN"
         );
 
 
-    /* EMPTY */
+    /* =========================
+       EMPTY
+    ========================= */
 
     if(rows.length === 0){
 
@@ -1388,7 +1468,9 @@ function renderCollection(){
     }
 
 
-    /* MEMBER CARDS */
+    /* =========================
+       MEMBER CARDS
+    ========================= */
 
     collectionList.innerHTML =
         rows.map(
@@ -1464,7 +1546,8 @@ function showError(message){
     collectedAmount.textContent =
         "₹0";
 
-    overallTotalAmount.textContent =
+
+    totalAmount.textContent =
         "₹0";
 
 }
@@ -1549,7 +1632,9 @@ generateMonths();
 loadGoogleSheet();
 
 
-/* Refresh every 60 seconds */
+/* ==========================================================
+   AUTO REFRESH
+========================================================== */
 
 setInterval(
     loadGoogleSheet,
