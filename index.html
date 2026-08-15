@@ -22,8 +22,6 @@
     --dark:#252a3e;
     --muted:#777d91;
     --bg:#f8f7fc;
-    --green:#16a34a;
-    --green-dark:#087f36;
 }
 
 html,
@@ -44,10 +42,6 @@ body{
     background:var(--bg);
     color:var(--dark);
 }
-
-/* =========================
-   APP
-========================= */
 
 .app{
     width:100%;
@@ -82,7 +76,6 @@ body{
         clamp(20px,5.5vw,30px);
 
     font-weight:800;
-
     line-height:1.12;
 
     white-space:nowrap;
@@ -94,7 +87,6 @@ body{
     color:var(--muted);
 
     font-size:18px;
-
     font-weight:600;
 }
 
@@ -136,7 +128,6 @@ body{
     height:100%;
 
     object-fit:cover;
-
     border-radius:50%;
 
     display:block;
@@ -365,9 +356,7 @@ body{
     text-transform:uppercase;
 
     overflow:hidden;
-
     text-overflow:ellipsis;
-
     white-space:nowrap;
 }
 
@@ -418,30 +407,26 @@ body{
 
 .error strong{
     display:block;
-
     margin-bottom:10px;
-
     color:#651cff;
 }
 
-/* ==========================================================
-   🟣 COLLECTED
-   SMALL PURPLE BOX
-========================================================== */
+/* =========================
+   MONTHLY COLLECTED
+========================= */
 
-.total-box{
+.collected-box{
     margin-top:19px;
 
-    min-height:76px;
+    min-height:88px;
 
-    padding:0 25px;
+    padding:0 30px;
 
-    border-radius:40px;
+    border-radius:46px;
 
     display:flex;
 
     align-items:center;
-
     justify-content:space-between;
 
     color:white;
@@ -455,42 +440,36 @@ body{
         );
 
     box-shadow:
-        0 12px 27px
-        rgba(101,28,255,.20);
+        0 15px 32px
+        rgba(101,28,255,.24);
 }
 
-.total-label{
-    font-size:19px;
-
+.collected-label{
+    font-size:21px;
     font-weight:800;
-
-    text-transform:uppercase;
 }
 
-.total-amount{
-    font-size:30px;
-
+.collected-amount{
+    font-size:35px;
     font-weight:900;
 }
 
-/* ==========================================================
-   🟢 TOTAL
-   BIG GREEN BOX
-========================================================== */
+/* =========================
+   OVERALL TOTAL
+========================= */
 
-.grand-total-box{
-    margin-top:14px;
+.overall-total-box{
+    margin-top:13px;
 
-    min-height:94px;
+    min-height:96px;
 
-    padding:0 28px;
+    padding:0 30px;
 
-    border-radius:47px;
+    border-radius:48px;
 
     display:flex;
 
     align-items:center;
-
     justify-content:space-between;
 
     color:white;
@@ -498,27 +477,23 @@ body{
     background:
         linear-gradient(
             110deg,
-            #087f36 0%,
-            #16a34a 50%,
-            #22c55e 100%
+            #009447,
+            #00a94f,
+            #00c85a
         );
 
     box-shadow:
-        0 14px 30px
-        rgba(22,163,74,.24);
+        0 15px 32px
+        rgba(0,170,75,.22);
 }
 
-.grand-total-label{
-    font-size:23px;
-
+.overall-total-label{
+    font-size:24px;
     font-weight:900;
-
-    text-transform:uppercase;
 }
 
-.grand-total-amount{
-    font-size:36px;
-
+.overall-total-amount{
+    font-size:38px;
     font-weight:900;
 }
 
@@ -568,14 +543,12 @@ body{
 
     .member-card{
         min-height:88px;
-
         padding-right:14px;
     }
 
     .avatar{
         width:60px;
         height:60px;
-
         min-width:60px;
     }
 
@@ -596,43 +569,30 @@ body{
         font-size:19px;
     }
 
-    .total-box{
-        min-height:70px;
-        padding:0 22px;
+    .collected-amount{
+        font-size:30px;
     }
 
-    .total-label{
-        font-size:17px;
+    .overall-total-box{
+        min-height:92px;
     }
 
-    .total-amount{
-        font-size:28px;
+    .overall-total-label{
+        font-size:22px;
     }
 
-    .grand-total-box{
-        min-height:88px;
-        padding:0 24px;
-    }
-
-    .grand-total-label{
-        font-size:21px;
-    }
-
-    .grand-total-amount{
+    .overall-total-amount{
         font-size:32px;
     }
 }
 </style>
 </head>
 
-
 <body>
 
 <div class="app">
 
-    <!-- =========================
-         HEADER
-    ========================= -->
+    <!-- HEADER -->
 
     <header class="header">
 
@@ -655,9 +615,7 @@ body{
     </header>
 
 
-    <!-- =========================
-         LOGO
-    ========================= -->
+    <!-- LOGO -->
 
     <div class="logo-wrap">
 
@@ -669,9 +627,7 @@ body{
     </div>
 
 
-    <!-- =========================
-         MONTH
-    ========================= -->
+    <!-- MONTH -->
 
     <div class="month-box">
 
@@ -685,9 +641,7 @@ body{
     </div>
 
 
-    <!-- =========================
-         SEARCH
-    ========================= -->
+    <!-- SEARCH -->
 
     <div class="search-wrap">
 
@@ -701,9 +655,7 @@ body{
     </div>
 
 
-    <!-- =========================
-         COLLECTION
-    ========================= -->
+    <!-- COLLECTION -->
 
     <main
         id="collectionList"
@@ -716,47 +668,41 @@ body{
     </main>
 
 
-    <!-- =========================
-         🟣 COLLECTED
-    ========================= -->
+    <!-- MONTHLY COLLECTION -->
 
-    <div class="total-box">
+    <div class="collected-box">
 
-        <div class="total-label">
+        <div class="collected-label">
             COLLECTED
         </div>
 
         <div
-            id="totalAmount"
-            class="total-amount">
+            id="collectedAmount"
+            class="collected-amount">
             ₹0
         </div>
 
     </div>
 
 
-    <!-- =========================
-         🟢 TOTAL
-    ========================= -->
+    <!-- OVERALL COLLECTION -->
 
-    <div class="grand-total-box">
+    <div class="overall-total-box">
 
-        <div class="grand-total-label">
+        <div class="overall-total-label">
             TOTAL
         </div>
 
         <div
-            id="grandTotalAmount"
-            class="grand-total-amount">
+            id="overallTotalAmount"
+            class="overall-total-amount">
             ₹0
         </div>
 
     </div>
 
 
-    <!-- =========================
-         FOOTER
-    ========================= -->
+    <!-- FOOTER -->
 
     <footer class="footer">
 
@@ -772,7 +718,7 @@ body{
 <script>
 
 /* ==========================================================
-   GOOGLE SHEET CONNECTION
+   GOOGLE SHEET
 ========================================================== */
 
 const SHEET_ID =
@@ -783,7 +729,7 @@ const SHEET_NAME =
 
 
 /*
-   Sheet1 columns:
+   Sheet1:
 
    A = NAME
    B = MONTH
@@ -793,14 +739,10 @@ const SHEET_NAME =
 
 
 /* ==========================================================
-   COLLECTION START
+   START MONTH
 ========================================================== */
 
 const START_YEAR = 2026;
-
-/*
-   July = 6
-*/
 
 const START_MONTH = 6;
 
@@ -857,14 +799,14 @@ const collectionList =
         "collectionList"
     );
 
-const totalAmount =
+const collectedAmount =
     document.getElementById(
-        "totalAmount"
+        "collectedAmount"
     );
 
-const grandTotalAmount =
+const overallTotalAmount =
     document.getElementById(
-        "grandTotalAmount"
+        "overallTotalAmount"
     );
 
 
@@ -876,6 +818,7 @@ function generateMonths(){
 
     monthSelect.innerHTML = "";
 
+
     const startDate =
         new Date(
             START_YEAR,
@@ -883,8 +826,10 @@ function generateMonths(){
             1
         );
 
+
     const now =
         new Date();
+
 
     const currentMonthDate =
         new Date(
@@ -892,6 +837,7 @@ function generateMonths(){
             now.getMonth(),
             1
         );
+
 
     let date =
         new Date(startDate);
@@ -994,86 +940,48 @@ function generateMonths(){
 function normalizeMonth(value){
 
     const month =
-        String(
-            value || ""
-        )
+        String(value || "")
         .trim()
         .toUpperCase();
 
 
     const map = {
 
-        JAN:
-        "JANUARY",
+        JAN:"JANUARY",
+        JANUARY:"JANUARY",
 
-        JANUARY:
-        "JANUARY",
+        FEB:"FEBRUARY",
+        FEBRUARY:"FEBRUARY",
 
-        FEB:
-        "FEBRUARY",
+        MAR:"MARCH",
+        MARCH:"MARCH",
 
-        FEBRUARY:
-        "FEBRUARY",
+        APR:"APRIL",
+        APRIL:"APRIL",
 
-        MAR:
-        "MARCH",
+        MAY:"MAY",
 
-        MARCH:
-        "MARCH",
+        JUN:"JUNE",
+        JUNE:"JUNE",
 
-        APR:
-        "APRIL",
+        JUL:"JULY",
+        JULY:"JULY",
 
-        APRIL:
-        "APRIL",
+        AUG:"AUGUST",
+        AUGUST:"AUGUST",
 
-        MAY:
-        "MAY",
+        SEP:"SEPTEMBER",
+        SEPT:"SEPTEMBER",
+        SEPTEMBER:"SEPTEMBER",
 
-        JUN:
-        "JUNE",
+        OCT:"OCTOBER",
+        OCTOBER:"OCTOBER",
 
-        JUNE:
-        "JUNE",
+        NOV:"NOVEMBER",
+        NOVEMBER:"NOVEMBER",
 
-        JUL:
-        "JULY",
-
-        JULY:
-        "JULY",
-
-        AUG:
-        "AUGUST",
-
-        AUGUST:
-        "AUGUST",
-
-        SEP:
-        "SEPTEMBER",
-
-        SEPT:
-        "SEPTEMBER",
-
-        SEPTEMBER:
-        "SEPTEMBER",
-
-        OCT:
-        "OCTOBER",
-
-        OCTOBER:
-        "OCTOBER",
-
-        NOV:
-        "NOVEMBER",
-
-        NOVEMBER:
-        "NOVEMBER",
-
-        DEC:
-        "DECEMBER",
-
-        DECEMBER:
-        "DECEMBER"
+        DEC:"DECEMBER",
+        DECEMBER:"DECEMBER"
 
     };
 
@@ -1133,23 +1041,19 @@ function loadGoogleSheet(){
 
 
                         const name =
-                            cells[0]?.v ??
-                            "";
+                            cells[0]?.v ?? "";
 
 
                         const month =
-                            cells[1]?.v ??
-                            "";
+                            cells[1]?.v ?? "";
 
 
                         const amountValue =
-                            cells[2]?.v ??
-                            0;
+                            cells[2]?.v ?? 0;
 
 
                         const yearValue =
-                            cells[3]?.v ??
-                            "";
+                            cells[3]?.v ?? "";
 
 
                         if(
@@ -1213,7 +1117,6 @@ function loadGoogleSheet(){
 
 
                 renderCollection();
-
 
             }
             catch(error){
@@ -1343,7 +1246,7 @@ function getSelectedMonthData(){
 
 
 /* ==========================================================
-   MONTHLY COLLECTED
+   GET MONTHLY COLLECTION
 ========================================================== */
 
 function getMonthlyTotal(){
@@ -1370,95 +1273,38 @@ function getMonthlyTotal(){
 
 
 /* ==========================================================
-   GRAND TOTAL
+   GET OVERALL COLLECTION
 ==========================================================
+
+   IMPORTANT:
+
+   This is NOT the selected month.
+
+   It adds EVERY amount from Sheet1.
 
    Example:
 
-   JULY   ₹1500
-   AUGUST ₹1800
-   SEPT   ₹1500
+   July   = ₹3,900
+   August = ₹900
 
-   TOTAL = ₹4800
+   TOTAL  = ₹4,800
 ========================================================== */
 
-function getGrandTotal(){
+function getOverallTotal(){
 
-    if(!selectedMonth){
+    return allData.reduce(
+        function(sum,item){
 
-        return 0;
+            return (
+                sum +
+                Number(
+                    item.amount || 0
+                )
+            );
 
-    }
-
-
-    const parts =
-        selectedMonth.split("-");
-
-
-    const selectedYear =
-        Number(parts[0]);
-
-
-    const selectedMonthNumber =
-        Number(parts[1]);
-
-
-    let total = 0;
-
-
-    allData.forEach(
-        function(item){
-
-            if(
-                !item.year ||
-                !item.month
-            ){
-
-                return;
-
-            }
-
-
-            const itemMonthIndex =
-                MONTH_NAMES.indexOf(
-                    item.month
-                );
-
-
-            if(
-                item.year <
-                selectedYear
-            ){
-
-                total +=
-                    Number(
-                        item.amount || 0
-                    );
-
-            }
-
-            else if(
-                item.year ===
-                selectedYear
-
-                &&
-
-                itemMonthIndex <=
-                selectedMonthNumber - 1
-            ){
-
-                total +=
-                    Number(
-                        item.amount || 0
-                    );
-
-            }
-
-        }
+        },
+        0
     );
-
-
-    return total;
 
 }
 
@@ -1469,13 +1315,12 @@ function getGrandTotal(){
 
 function renderCollection(){
 
-    let rows =
-        getSelectedMonthData();
-
-
     /*
-       MONTHLY COLLECTED
-       is calculated before search.
+       IMPORTANT:
+       Monthly collected is calculated BEFORE search.
+
+       So searching a name will NOT change
+       the monthly collection amount.
     */
 
     const monthlyTotal =
@@ -1483,19 +1328,18 @@ function renderCollection(){
 
 
     /*
-       GRAND TOTAL
-       from July to selected month.
+       Overall total is ALL months.
     */
 
-    const grandTotal =
-        getGrandTotal();
+    const overallTotal =
+        getOverallTotal();
 
 
     /*
-       COLLECTED
+       SHOW MONTHLY COLLECTION
     */
 
-    totalAmount.textContent =
+    collectedAmount.textContent =
         "₹" +
         monthlyTotal.toLocaleString(
             "en-IN"
@@ -1503,18 +1347,27 @@ function renderCollection(){
 
 
     /*
-       TOTAL
+       SHOW OVERALL COLLECTION
     */
 
-    grandTotalAmount.textContent =
+    overallTotalAmount.textContent =
         "₹" +
-        grandTotal.toLocaleString(
+        overallTotal.toLocaleString(
             "en-IN"
         );
 
 
     /*
-       SEARCH
+       GET MONTH DATA FOR LIST
+    */
+
+    let rows =
+        getSelectedMonthData();
+
+
+    /*
+       SEARCH ONLY AFFECTS
+       THE MEMBER LIST.
     */
 
     const search =
@@ -1631,11 +1484,11 @@ function showError(message){
     `;
 
 
-    totalAmount.textContent =
+    collectedAmount.textContent =
         "₹0";
 
 
-    grandTotalAmount.textContent =
+    overallTotalAmount.textContent =
         "₹0";
 
 }
